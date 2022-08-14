@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "./Navbar";
 import LandingPage from "../pages/LandingPage";
-import ForgotPassword from "../pages/ForgotPassword";
+import ForgotPassword from "../pages/auth/forgot-password/ForgotPassword";
+import EmailSent from "../pages/auth/forgot-password/EmailSent";
+import ResetPassword from "../pages/auth/forgot-password/ResetPassword";
 import RegisteredPage from "../pages/RegisteredPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
@@ -20,6 +22,8 @@ function App() {
             <Route path="/register" element={<SignUp />} />
             <Route path="/registered" element={<RegisteredPage />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/forgot-password/email-sent" element={<EmailSent />} />
+            <Route path="/forgot-password/reset" element={<ResetPassword />} />
           </Routes>
         </div>
       </div>
