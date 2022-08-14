@@ -47,4 +47,7 @@
   .btn-icon-text {
     @apply bg-bright text-primary-500 rounded-[100px] w-[40px] h-[40px] enabled:hover:bg-primary-50 enabled:focus:bg-primary-50 enabled:active:bg-primary-300 disabled:text-neutral-100;
   }
+  .label{
+    @apply bg-neutral-50 w-[400px] px-[21px] py-[13px] rounded-[14px] active:border-primary-300 active:bg-bright active:shadow-[0px_0px_0px_4px_#EEF1FF] focus:bg-bright
+  }
 }

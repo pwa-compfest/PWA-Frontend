@@ -31,19 +31,18 @@ function LandingPage() {
             </p>
             <div className="flex justify-between md:justify-start">
               <a
-              href="/"
-              class="btn-primary inline-flex items-center justify-center md:mr-10"
-            >
-              INSTRUCTOR
-            </a>
-            <a
-              href="/"
-              class="btn-primary inline-flex items-center justify-center"
-            >
-              STUDENT
-            </a>
+                href="/"
+                class="btn-primary inline-flex items-center justify-center md:mr-10"
+              >
+                INSTRUCTOR
+              </a>
+              <a
+                href="/"
+                class="btn-primary inline-flex items-center justify-center"
+              >
+                STUDENT
+              </a>
             </div>
-            
           </div>
           <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
             <img

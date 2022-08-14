@@ -12,7 +12,7 @@ function Navbar() {
         </a>
 
         <a
-          href="/"
+          href="/login"
           className="btn-text text-neutral-500 font-normal px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
         >
           Sign In
