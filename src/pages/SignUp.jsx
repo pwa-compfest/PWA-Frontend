@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 function SignUp() {
   return (
     <div>
-      <Navbar />
       <div className="grid grid-cols-2 mx-auto h-[calc(100vh-75px)] px-[150px]">
         <div className="flex justify-center items-center justify-items-center">
           <div className="hidden w-[400px] justify-center sm:grid items-center ml-[50px]">

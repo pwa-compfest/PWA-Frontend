@@ -17,6 +17,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/registered-page" element={<RegisteredPage/>}/>
             <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
         </div>
