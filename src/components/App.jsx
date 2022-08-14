@@ -1,9 +1,12 @@
-import Navbar from "./Navbar";
 import React from "react";
+import Navbar from "./Navbar";
 import LandingPage from "../pages/LandingPage";
 import ForgotPassword from "../pages/ForgotPassword";
+import RegisteredPage from "../pages/RegisteredPage";
 import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 
 function App() {
   return(
