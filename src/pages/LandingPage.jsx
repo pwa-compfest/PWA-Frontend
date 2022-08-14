@@ -1,10 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-
 function LandingPage() {
   return (
     <div id="top">
-      <Navbar />
       <section class="bg-white px-[30px] py-2 mt-3 h-[80vh] md:h-[77.4vh] md:relative sm:px-[100px]">
         <div class="grid mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12">
           <div class="mr-auto place-self-center lg:col-span-7">

@@ -1,10 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-
 function SignIn() {
   return (
     <div>
-      <Navbar />
       <div className="grid grid-cols-2 mx-auto h-[calc(100vh-75px)] px-[150px]">
         <div className="flex justify-center items-center justify-items-center">
           <div>
@@ -39,7 +36,7 @@ function SignIn() {
               ></input>
             </div>
             <div className="flex justify-end">
-              <a href="/" className="link text-primary-300 text-[12px]">
+              <a href="/forgot-password" className="link text-primary-300 text-[12px]">
                 Forgot Password?
               </a>
             </div>
