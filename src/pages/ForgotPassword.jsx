@@ -4,7 +4,7 @@ function ForgotPassword() {
 return (
 <section className="bg-white px-[30px]">
     <div className="container">
-        <div className="grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 ">
+        <div className="grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">
             <div className="justify-center text-center p-5 hidden lg:mt-0 xl:block">
                 <h2 className="h2">Forgot Your Password</h2>
                 <p className="subtitle text-neutral-500 mt-3">Dont worry, we'll help you out!</p>
