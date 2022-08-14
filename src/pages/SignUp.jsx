@@ -1,14 +1,13 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+
 
 function SignUp() {
   return (
-    <div>
-      <div className="grid grid-cols-2 mx-auto h-[calc(100vh-75px)] px-[150px]">
-        <div className="flex justify-center items-center justify-items-center">
-          <div className="hidden w-[400px] justify-center sm:grid items-center ml-[50px]">
+      <div className="grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 ">
+        <div className="justify-center items-center justify-items-center hidden lg:mt-0 xl:block">
+          <div className="justify-center sm:grid items-center">
             <img
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
+              src="/images/sign_up.png"
               alt="mockup"
             />
           </div>
@@ -33,7 +32,6 @@ function SignUp() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
