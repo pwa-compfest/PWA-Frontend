@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        <div className="content">
+        <div className="content py-2 h-[80vh] md:h-[77.4vh] md:relative sm:px-[100px] mt-8">
           <Routes>
             <Route exact path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />

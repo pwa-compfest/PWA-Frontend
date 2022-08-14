@@ -13,6 +13,7 @@ module.exports = {
       fontFamily: {
         poppins: "Poppins, sans-serif",
         work: "Work Sans, sans-serif",
+        
       },
       colors: {
         "primary-50": "#D8DDF6",

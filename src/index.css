@@ -6,7 +6,7 @@
     @apply font-poppins font-bold text-[64px] tracking-[-2%] leading-none;
   }
   .h2 {
-    @apply font-poppins font-bold text-[40px] tracking-[-2%] leading-none;
+    @apply font-poppins font-bold text-[40px] tracking-[-0.02em] leading-none;
   }
   .h3 {
     @apply font-poppins font-bold text-[24px] tracking-[-2%] leading-[1.2];
@@ -49,5 +49,11 @@
   }
   .label{
     @apply bg-neutral-50 w-[400px] px-[21px] py-[13px] rounded-[14px] active:border-primary-300 active:bg-bright active:shadow-[0px_0px_0px_4px_#EEF1FF] focus:bg-bright
+  }
+  .label-form{
+    @apply font-work font-normal text-[16px] text-neutral-500
+  }
+  .text-input{
+    @apply bg-neutral-50 w-full px-[21px] py-[13px] rounded-[14px] active:border-primary-300 active:bg-bright active:shadow-[0px_0px_0px_4px_#EEF1FF]  focus:bg-bright 
   }
 }

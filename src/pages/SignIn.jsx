@@ -1,8 +1,7 @@
 import React from "react";
 function SignIn() {
   return (
-    <div>
-      <div className="grid grid-cols-2 mx-auto h-[calc(100vh-75px)] px-[150px]">
+      <div className="grid grid-cols-2 mx-auto">
         <div className="flex justify-center items-center justify-items-center">
           <div>
             <h2 className="h2 flex justify-center mb-4">Welcome Back!</h2>
@@ -35,8 +34,8 @@ function SignIn() {
                 placeholder="enter password"
               ></input>
             </div>
-            <div className="flex justify-end">
-              <a href="/forgot-password" className="link text-primary-300 text-[12px]">
+            <div className="flex justify-end mt-3">
+              <a href="/forgot-password" className="link text-primary-300 text-[12px] no-underline">
                 Forgot Password?
               </a>
             </div>
@@ -45,14 +44,13 @@ function SignIn() {
             </button>
             <p className="body mt-8 text-neutral-500 flex justify-center">
               Don't have an account yet?
-              <a href="/" className="link text-primary-300 ml-2">
+              <a href="/" className="link text-primary-300 ml-2 no-underline">
                 Create One
               </a>
             </p>
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
