@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
-function CardHomePage(props) {
+function CardDashboardStudent(props) {
   const { data } = props;
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
@@ -31,6 +33,9 @@ function CardHomePage(props) {
               </div>
             </div>
             <div className="p-5 relative">
+              <div className="w-[40px] mb-2">
+                <CircularProgressbar value={item.id} text={`${item.id}`} />
+              </div>
               <p className="subtitle">Course</p>
               <p className="body text-neutral-500">Prof. Dr. Something</p>
               <button className="btn-primary shadow-glow absolute bottom-5 right-5">
@@ -58,4 +63,4 @@ function CardHomePage(props) {
     </>
   );
 }
-export default CardHomePage;
+export default CardDashboardStudent;
