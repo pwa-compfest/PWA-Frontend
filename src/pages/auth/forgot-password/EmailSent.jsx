@@ -2,7 +2,7 @@ import React from "react";
 
 function EmailSent() {
 return (
-<section className="bg-white px-[30px]">
+<section className="bg-white px-[30px] md:h-[77.4vh] md:relative sm:px-[100px]">
     <div className="container">
         <div className="grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">
             <div className="justify-center text-center p-5 hidden lg:mt-0 xl:block">
