@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/Footer";
 function LandingPage() {
 return (
 <div className="">
@@ -89,7 +90,7 @@ return (
 
   <div id="bottom" className="h-[70px]"></div>
 
-  <section className="bg-white xl:px-0 xs:px-12">
+  <section className="bg-white xl:px-0 xs:px-12 mb-20">
     <div className="grid mx-auto grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">
       <div className="place-self-center rounded-2xl shadow-xl px-6 py-6">
         <p className="pretitle mb-2">FOR INSTRUCTOR</p>
@@ -122,7 +123,7 @@ return (
     
   </section>
 
-  <div className="h-[70px]"></div>
+  <Footer/>
 </div>
 );
 }
