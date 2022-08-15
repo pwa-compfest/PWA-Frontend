@@ -13,6 +13,7 @@ import HomePage from "../pages/HomePage";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import RegisterStudent from "../pages/auth/RegisterStudent";
 import DashboardInstructor from "../pages/DashboardInstructor";
+import QuizStudent from "../pages/student/QuizStudent";
 
 function App() {
   return(
@@ -31,7 +32,8 @@ function App() {
             <Route path="/forgot-password/reset" element={<ResetPassword />} /> 
             <Route exact path="/admin" element={<VerifyInstructor />} />
             <Route path="/admin/verify-instructor" element={<VerifyInstructor />} />       
-            <Route path="/admin/verify-course" element={<VerifyCourse />} />       
+            <Route path="/admin/verify-course" element={<VerifyCourse />} />    
+            <Route path="/student/quiz" element={<QuizStudent />} />"   
             <Route path="/home" element={<HomePage />} />
             <Route path="/dashboard/instructor" element={<DashboardInstructor />} />
         </Routes>
