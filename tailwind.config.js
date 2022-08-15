@@ -45,7 +45,7 @@ module.exports = {
         bright: "#FFFFFF",
       },
       boxShadow: {
-        glow: "0px 4px 20px #8B98E5",
+        glow: "0px 4px 10px #8B98E5",
       },
     },
   },
