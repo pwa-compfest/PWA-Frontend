@@ -1,7 +1,7 @@
 import React from "react";
 function LandingPage() {
 return (
-<div className="">
+<div className="md:h-[77.4vh] md:relative sm:px-[100px]">
   <div id="top"></div>
   <section className="bg-white xs:px-12">
     <div className="grid mx-auto md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">

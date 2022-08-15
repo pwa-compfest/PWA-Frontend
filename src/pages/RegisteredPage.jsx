@@ -1,7 +1,7 @@
 import React from "react";
 function RegisteredPage() {
   return (
-<section className="bg-white px-[30px]">
+<section className="bg-white md:h-[77.4vh] md:relative sm:px-[100px] px-[30px]">
     <div className="container">
       <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 ">
         <div className="flex lg:justify-center text-center p-2">
