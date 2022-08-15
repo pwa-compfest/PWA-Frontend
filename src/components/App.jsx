@@ -7,28 +7,28 @@ import ResetPassword from "../pages/auth/forgot-password/ResetPassword";
 import RegisteredPage from "../pages/RegisteredPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import VerifiyInstructor from "../pages/admin/verify";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-
-
 function App() {
   return(
     <Router>
       <div className="App">
         <Navbar />
-        <div className="content h-[80vh] md:h-[77.4vh] md:relative sm:px-[100px] mt-8">
-          <Routes>
+        <div className="content h-[80vh]  mt-8">
+        <Routes>
             <Route exact path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/registered" element={<RegisteredPage />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/forgot-password/email-sent" element={<EmailSent />} />
-            <Route path="/forgot-password/reset" element={<ResetPassword />} />
-          </Routes>
+            <Route path="/forgot-password/reset" element={<ResetPassword />} /> 
+            <Route exact path="/admin" element={<VerifiyInstructor />} />
+            <Route path="/admin/verify-instructor" element={<VerifiyInstructor />} />       
+        </Routes>
         </div>
       </div>
     </Router>
   )
 }
-
 export default App;
