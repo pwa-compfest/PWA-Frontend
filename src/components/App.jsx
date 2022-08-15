@@ -7,9 +7,11 @@ import ResetPassword from "../pages/auth/forgot-password/ResetPassword";
 import RegisteredPage from "../pages/RegisteredPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import VerifiyInstructor from "../pages/admin/verify/Instructor";
-import VerifiyCourse from "../pages/admin/verify/Course";
+import VerifyInstructor from "../pages/admin/VerifyInstructor";
+import VerifyCourse from "../pages/admin/VerifyCourse";
+import HomePage from "../pages/HomePage";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 function App() {
   return(
     <Router>
@@ -24,9 +26,10 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/forgot-password/email-sent" element={<EmailSent />} />
             <Route path="/forgot-password/reset" element={<ResetPassword />} /> 
-            <Route exact path="/admin" element={<VerifiyInstructor />} />
-            <Route path="/admin/verify-instructor" element={<VerifiyInstructor />} />       
-            <Route path="/admin/verify-course" element={<VerifiyCourse />} />       
+            <Route exact path="/admin" element={<VerifyInstructor />} />
+            <Route path="/admin/verify-instructor" element={<VerifyInstructor />} />       
+            <Route path="/admin/verify-course" element={<VerifyCourse />} />       
+            <Route path="/home" element={<HomePage />} />
         </Routes>
         </div>
       </div>

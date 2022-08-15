@@ -1,6 +1,6 @@
 import React from "react";
 function RegisteredPage() {
-  return (
+return (
 <section className="bg-white md:h-[77.4vh] md:relative sm:px-[100px] px-[30px]">
     <div className="container">
       <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 ">
