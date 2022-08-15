@@ -1,4 +1,5 @@
-import Dropdown from "../Dropdown"
+import React from "react";
+import Dropdown from "../Dropdown";
 
 function PersonalDetails({ prevStep, nextStep }) {
     return (

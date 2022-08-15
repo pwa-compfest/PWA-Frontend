@@ -12,6 +12,8 @@ import VerifyCourse from "../pages/admin/VerifyCourse";
 import HomePage from "../pages/HomePage";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import RegisterStudent from "../pages/auth/RegisterStudent";
+import RegisterInstructor from "../pages/auth/RegisterInstructor";
+import RequestSent from "./RequestSent";
 
 function App() {
   return(
@@ -25,6 +27,8 @@ function App() {
             <Route path="/register" element={<SignUp />} />
             <Route path="/registered" element={<RegisteredPage />} />
             <Route path="/register/student" element={<RegisterStudent />} />
+            <Route path="/register/instructor" element={<RegisterInstructor />} />
+            <Route path="/register/instructor/request-sent" element={<RequestSent />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/forgot-password/email-sent" element={<EmailSent />} />
             <Route path="/forgot-password/reset" element={<ResetPassword />} /> 

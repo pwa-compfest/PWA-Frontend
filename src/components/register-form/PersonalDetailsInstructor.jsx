@@ -1,7 +1,6 @@
-import React from "react";
 import Dropdown from "../Dropdown";
 
-function PersonalDetailsStudent({ prevStep, nextStep }) {
+function PersonalDetailsInstructor({ prevStep, nextStep }) {
     return (
       <form>
         <div className="mb-5">
@@ -10,14 +9,14 @@ function PersonalDetailsStudent({ prevStep, nextStep }) {
             placeholder="Your name"></input>
         </div>
         <div className="mb-5">
-          <label className="label-form block">NIS</label>
+          <label className="label-form block">NIP</label>
           <input className="text-input mx-auto focus:outline-none" type={"number"}
             placeholder="1234"></input>
         </div>
         <div className="mb-5">
-          <label className="label-form block">Major</label>
+          <label className="label-form block">Expertise</label>
           <Dropdown
-          placeholder="Pick a major"
+          placeholder="Pick an expertise"
           data={[{
             value: "vcd", 
             label: "Visual Communication Design"
@@ -42,4 +41,4 @@ function PersonalDetailsStudent({ prevStep, nextStep }) {
     )
 }
 
-export default PersonalDetailsStudent;
+export default PersonalDetailsInstructor;
