@@ -60,6 +60,18 @@
     @apply font-work font-normal text-[16px] text-neutral-500
   }
   .text-input{
-    @apply bg-neutral-50 w-full px-[21px] py-[13px] rounded-[14px] active:border-primary-300 active:bg-bright active:shadow-[0px_0px_0px_4px_#EEF1FF]  focus:bg-bright 
+    @apply bg-neutral-50 w-full px-[21px] py-[13px] rounded-[14px] active:border-primary-300 active:bg-bright active:shadow-[0px_0px_0px_4px_#EEF1FF]  focus:bg-bright text-neutral-500
+  }
+  .file-input{
+    @apply text-neutral-500 body w-full file:mr-4 file:px-[21px] file:py-[13px] file:rounded-[14px] file:bg-bright file:border-neutral-50 file:border-solid file:text-neutral-500 hover:cursor-pointer file:hover:cursor-pointer
+  }
+  .dropdown{
+    @apply bg-bright border-neutral-50 border-[1px] rounded-[10px] text-neutral-500 px-[21px] py-[13px]
+  }
+  .selection-container{
+    @apply bg-bright border-neutral-50 border-[1px] rounded-b-[10px] py-[20px] top-[40px]
+  }
+  .selection-label{
+    @apply text-neutral-500 px-[20px] py-[20px] hover:cursor-pointer hover:bg-neutral-50
   }
 }
