@@ -12,6 +12,7 @@ import VerifyCourse from "../pages/admin/VerifyCourse";
 import HomePage from "../pages/HomePage";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import RegisterStudent from "../pages/auth/RegisterStudent";
+import DashboardInstructor from "../pages/DashboardInstructor";
 
 function App() {
   return(
@@ -32,6 +33,7 @@ function App() {
             <Route path="/admin/verify-instructor" element={<VerifyInstructor />} />       
             <Route path="/admin/verify-course" element={<VerifyCourse />} />       
             <Route path="/home" element={<HomePage />} />
+            <Route path="/dashboard/instructor" element={<DashboardInstructor />} />
         </Routes>
         </div>
       </div>
