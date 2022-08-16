@@ -1,3 +1,11 @@
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border-radius: 100%
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -76,5 +84,17 @@
   }
   .shadow-card{
     @apply shadow-[0px_15px_30px_-9px_#E0E1E6]
+  }
+  .correct-answer{
+    @apply bg-[#EDFCF8]
+  }
+  .wrong-answer{
+    @apply bg-[#FFF0F0]
+  }
+  input[type="radio"]{
+    @apply w-[20px] h-[20px] border-[1px] border-[#E0E1E6]
+  }
+  input[type="radio"]:checked{
+    @apply bg-[#3E54D3]
   }
 }

@@ -14,7 +14,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import RegisterStudent from "../pages/auth/RegisterStudent";
 import DashboardInstructor from "../pages/DashboardInstructor";
 import QuizStudent from "../pages/student/QuizStudent";
-
 function App() {
   return(
     <Router>
