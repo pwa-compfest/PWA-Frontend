@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 
-function CardVerifyInstructor(props) {
-    const { data } = props;
+function CardVerifyInstructor() {
+    
+    const [data, setData] = useState([]);
+    useEffect(() => {
+      fetch("https://jsonplaceholder.typicode.com/albums/1/photos").then(
+          (response) =>
+          response.json().then((res) => {
+            setData(res)
+          })
+      );
+    }, [])
+    
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
@@ -61,4 +71,5 @@ return (
 </>
 );
 }
-export default CardVerifyInstructor;
+
+export default CardVerifyInstructor
