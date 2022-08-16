@@ -19,6 +19,8 @@ import AddQuiz from "../pages/instructor/AddQuiz";
 import AddLecture from "../pages/AddLecture";
 import AddCourse from "../pages/AddCourse";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import DetailCourseStudent from "../pages/student/DetailCourseStudent";
+
 function App() {
   return(
     <Router>
@@ -45,6 +47,8 @@ function App() {
             <Route path="/instructor/add-lecture" element={<AddLecture />} />
             <Route path="/instructor/add-quiz" element={<AddQuiz />} /> 
             <Route path="/instructor/add-course" element={<AddCourse />} />
+            <Route path="/dashboard/instructor" element={<DashboardInstructor />} />
+            <Route path="/student/course" element={<DetailCourseStudent />} />
         </Routes>
         </div>
       </div>
