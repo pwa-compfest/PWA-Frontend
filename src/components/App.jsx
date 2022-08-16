@@ -16,7 +16,6 @@ import RequestSent from "./RequestSent";
 import DashboardInstructor from "../pages/DashboardInstructor";
 import QuizStudent from "../pages/student/QuizStudent";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-
 function App() {
   return(
     <Router>
