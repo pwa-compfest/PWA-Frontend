@@ -24,7 +24,7 @@ function CardHomePage(props) {
       {currentItems.map((item) => {
         return (
             <div className="bg-white rounded-[24px] shadow-md w-[300px] h-[350px] grid grid-rows-2 mb-3 mt-12">
-            <div className="overflow-hidden relative">
+            <div className="overflow-hidden rounded-t-[24px] relative">
               <img className="object-contain" src={item.url} alt={item.title} />
             </div>
             <div className="p-5 relative">
