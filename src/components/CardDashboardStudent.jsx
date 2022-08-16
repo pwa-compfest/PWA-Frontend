@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import CircleProgressBar from "./CircleProgressBar";
 
-function CardHomePage(props) {
+function CardDashboardStudent(props) {
   const { data } = props;
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
@@ -23,7 +24,7 @@ function CardHomePage(props) {
     <>
       {currentItems.map((item) => {
         return (
-          <div className="bg-white rounded-[24px] shadow-md w-[300px] h-[350px] grid grid-rows-2 mb-3">
+          <div className="bg-white rounded-[24px] shadow-md w-[300px] h-[380px] grid grid-rows-2 mb-3">
             <div className="overflow-hidden relative rounded-t-[24px]">
               <img className="object-contain" src={item.url} alt={item.title} />
               <div className="bg-neutral-50 px-3 py-1 body text-neutral-500 rounded-[20px] absolute right-5 top-5">
@@ -31,6 +32,9 @@ function CardHomePage(props) {
               </div>
             </div>
             <div className="p-5 relative">
+              <div className="w-[40px] mb-2">
+                <CircleProgressBar value={item.id} />
+              </div>
               <p className="subtitle">Course</p>
               <p className="body text-neutral-500">Prof. Dr. Something</p>
               <button className="btn-primary shadow-glow absolute bottom-5 right-5">
@@ -58,4 +62,4 @@ function CardHomePage(props) {
     </>
   );
 }
-export default CardHomePage;
+export default CardDashboardStudent;
