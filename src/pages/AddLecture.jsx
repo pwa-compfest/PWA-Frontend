@@ -33,7 +33,7 @@ function AddLecture() {
                     className="btn-icon-text text-neutral-500"
                     onClick={() => handleRemoveClick(i)}
                   >
-                    <i class="fa-solid fa-trash"></i>
+                    <i className="fa-solid fa-trash"></i>
                   </button>
                 </div>
                 <label className="label-form">Lecture name</label>

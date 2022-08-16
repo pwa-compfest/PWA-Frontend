@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 function QuizStudent(){
-        const [answer,setAnswer] = useState()
+    const [answer,setAnswer] = useState()
     const handleOptionChange = (e) => {
         setAnswer(e.target.value)
     }
