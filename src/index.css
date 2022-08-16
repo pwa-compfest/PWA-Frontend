@@ -104,4 +104,10 @@ input[type="radio"] {
   input[type="radio"]:checked{
     @apply bg-[#3E54D3] border-0
   }
+  .tab{
+    @apply body flex-grow
+  }
+  .tab-selected{
+    @apply bg-primary-500 text-bright shadow-glow rounded-[14px] body py-2 font-bold flex-grow
+  }
 }
