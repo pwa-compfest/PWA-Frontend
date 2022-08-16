@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 
-function CardHomePage(props) {
-  const { data } = props;
+function CardVerifyCourse() {
+
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/albums/1/photos").then(
+        (response) =>
+        response.json().then((res) => {
+          setData(res)
+        })
+    );
+  }, [])
+
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -23,11 +33,11 @@ function CardHomePage(props) {
     <>
       {currentItems.map((item) => {
         return (
-            <div className="bg-white rounded-[24px] shadow-md w-[300px] h-[350px] grid grid-rows-2 mb-3 mt-12">
-            <div className="overflow-hidden rounded-t-[24px] relative">
+            <div className="max-w-md mx-auto md:max-w-2xl rounded-[24px] shadow-md w-[300px] h-[350px] grid grid-rows-2 mb-3 mt-12 ">
+            <div className="overflow-hidden rounded-t-[24px] order-0 relative h-[225px]">
               <img className="object-contain" src={item.url} alt={item.title} />
             </div>
-            <div className="p-5 relative">
+            <div className="rounded-[24px] bg-bright p-5 order-1 relative">
               <p className="subtitle">Course</p>
               <p className="body text-neutral-500">Prof. Dr. Something</p>
               <div className="mt-5 flex justify-center">
@@ -56,4 +66,4 @@ function CardHomePage(props) {
     </>
   );
 }
-export default CardHomePage;
+export default CardVerifyCourse;

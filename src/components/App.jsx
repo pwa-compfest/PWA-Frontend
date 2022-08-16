@@ -7,8 +7,7 @@ import ResetPassword from "../pages/auth/forgot-password/ResetPassword";
 import RegisteredPage from "../pages/RegisteredPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import VerifyInstructor from "../pages/admin/VerifyInstructor";
-import VerifyCourse from "../pages/admin/VerifyCourse";
+import Verify from "../pages/admin/Verify";
 import HomePage from "../pages/HomePage";
 import RegisterStudent from "../pages/auth/RegisterStudent";
 import RegisterInstructor from "../pages/auth/RegisterInstructor";
@@ -39,9 +38,7 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/forgot-password/email-sent" element={<EmailSent />} />
             <Route path="/forgot-password/reset" element={<ResetPassword />} /> 
-            <Route exact path="/admin" element={<VerifyInstructor />} />
-            <Route path="/admin/verify-instructor" element={<VerifyInstructor />} />       
-            <Route path="/admin/verify-course" element={<VerifyCourse />} />    
+            <Route path="/admin/verify" element={<Verify />} />      
             <Route path="/student/quiz" element={<QuizStudent />} />"   
             <Route path="/home" element={<HomePage />} />
             <Route path="/student/dashboard" element={<DashboardStudent />} />

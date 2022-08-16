@@ -1,5 +1,6 @@
 import React from 'react'
 import CardQuestionStudent from '../../components/CardQuestionStudent'
+import CircleProgressBar from '../../components/CircleProgressBar'
 
 function QuizStudent(){
     return(
@@ -19,7 +20,9 @@ function QuizStudent(){
                 <div className='mb-5'>
                     <h3 className='h3'>Your Score</h3>
                     <div className='flex justify-center mt-5'>
-                    <img src="/images/progress.png" alt=""/>
+                        <div className="min-w-[100px] max-w-[100px]">
+                                <CircleProgressBar value={50}/>
+                        </div>
                     </div>
                 </div>
             </div>
