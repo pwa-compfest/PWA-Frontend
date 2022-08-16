@@ -21,7 +21,7 @@
     @apply font-work font-normal text-[10px] tracking-[3%] leading-[1.4];
   }
   .body {
-    @apply font-work font-normal text-[16px] leading-[1.4];
+    @apply font-work font-normal text-[16px] leading-[1.4] text-[#646983];
   }
   .button-text {
     @apply font-work font-bold text-[16px];
@@ -73,5 +73,8 @@
   }
   .selection-label{
     @apply text-neutral-500 px-[20px] py-[20px] hover:cursor-pointer hover:bg-neutral-50
+  }
+  .shadow-card{
+    @apply shadow-[0px_15px_30px_-9px_#E0E1E6]
   }
 }
