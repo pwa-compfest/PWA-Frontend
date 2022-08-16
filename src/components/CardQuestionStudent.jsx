@@ -24,6 +24,13 @@ function QuizStudent(){
                     <input type="radio" className='mr-3' value="4" onChange={handleOptionChange} checked={answer === '4'} /> Choice 4
                 </div>
             </div>
+            <div className='flex justify-end pt-12 py-12'>
+                {/* <button className='btn-primary'>SUBMIT ANSWER</button> */}
+                <div className='text-primary-500'>
+                    <a href="/" className='button-text mr-12'>RETAKE QUIZ</a>
+                    <a href="/home" className='button-text'>COURSE PAGE</a>
+                </div>
+            </div>
         </div>
     )
 }
