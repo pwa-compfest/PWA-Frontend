@@ -14,13 +14,13 @@ function QuizStudent(){
                 <div className='mb-3 body flex justify-start'>
                     <input type="radio" className='mr-3' value="1" onChange={handleOptionChange} checked={answer === '1'} /> Choice 1
                 </div>
-                <div className='mb-3 body flex justify-start'>
+                <div className='mb-3 body flex justify-start wrong-answer'>
                     <input type="radio" className='mr-3' value="2" onChange={handleOptionChange} checked={answer === '2'} /> Choice 2
                 </div>
                 <div className='mb-3 body flex justify-start'>
                     <input type="radio" className='mr-3' value="3" onChange={handleOptionChange} checked={answer === '3'} /> Choice 3
                 </div>
-                <div className='mb-3 body flex justify-start'>
+                <div className='mb-3 body flex justify-start correct-answer'>
                     <input type="radio" className='mr-3' value="4" onChange={handleOptionChange} checked={answer === '4'} /> Choice 4
                 </div>
             </div>
