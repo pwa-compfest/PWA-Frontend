@@ -18,7 +18,10 @@ function DashboardInstructor() {
         <h1 className="h1 text-center mb-10">My Course Program</h1>
         <div className="flex justify-between mb-5 px-14">
           <p className="body">Total course: {totalCourse}</p>
-          <a href="/add" className="link no-underline text-primary-500">
+          <a
+            href="/instructor/add-course"
+            className="link no-underline text-primary-500"
+          >
             + ADD COURSE
           </a>
         </div>
