@@ -6,6 +6,10 @@ input[type="radio"] {
   appearance: none;
   border-radius: 100%
 }
+.answer-question{
+  width: 23px !important
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -68,7 +72,10 @@ input[type="radio"] {
     @apply font-work font-normal text-[16px] text-neutral-500
   }
   .text-input{
-    @apply bg-neutral-50 w-full px-[21px] py-[13px] rounded-[14px] active:border-primary-300 active:bg-bright active:shadow-[0px_0px_0px_4px_#EEF1FF]  focus:bg-bright text-neutral-500
+    @apply bg-neutral-50 w-full px-[21px] py-[13px] rounded-[14px] active:border-primary-300 active:bg-bright active:shadow-[0px_0px_0px_4px_#EEF1FF]  focus:bg-bright text-neutral-500 focus:border-neutral-50 focus:outline outline-offset-1 outline-1 outline-neutral-50
+  }
+  .text-input:read-only{
+    @apply bg-bright border-solid border-[1px] border-neutral-50 text-neutral-300 focus:outline-none
   }
   .file-input{
     @apply text-neutral-500 body w-full file:mr-4 file:px-[21px] file:py-[13px] file:rounded-[14px] file:bg-bright file:border-neutral-50 file:border-solid file:text-neutral-500 hover:cursor-pointer file:hover:cursor-pointer
@@ -95,6 +102,6 @@ input[type="radio"] {
     @apply w-[20px] h-[20px] border-[1px] border-[#E0E1E6]
   }
   input[type="radio"]:checked{
-    @apply bg-[#3E54D3]
+    @apply bg-[#3E54D3] border-0
   }
 }
