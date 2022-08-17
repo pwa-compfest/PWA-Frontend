@@ -20,6 +20,7 @@ import AddCourse from "../pages/AddCourse";
 import DetailCourseStudent from "../pages/student/DetailCourseStudent";
 import DashboardStudent from "../pages/DashboardStudent";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import DetailCourseInstructor from "../pages/instructor/DetailCourseInstructor";
 
 function App() {
   return(
@@ -49,6 +50,7 @@ function App() {
             <Route path="/instructor/dashboard" element={<DashboardInstructor />} />
             <Route path="/student/course" element={<DetailCourseStudent />} />
             <Route path="/student/dashboard" element={<DashboardStudent />} />
+            <Route path="/instructor/course" element={<DetailCourseInstructor />} />
         </Routes>
         </div>
       </div>
