@@ -86,8 +86,12 @@ const ToastManage = {
 function Toast({ type, content, closeToast }) {
     setTimeout(() => closeToast({ display: false }), 2000)
     return (
-        <div className="fixed z-10 top-24 w-[420px] animate-slideIn">
-            {ToastManage[type].render(content, closeToast)}
+        <div className="w-screen z-10 h-screen fixed top-0 right-0">
+            <div className="flex justify-center mt-[100px]">
+                <div className="sm:w-[420px] w-[360px] animate-slideIn">
+                    {ToastManage[type].render(content, closeToast)}
+                </div>
+            </div>
         </div>
     )
 }
