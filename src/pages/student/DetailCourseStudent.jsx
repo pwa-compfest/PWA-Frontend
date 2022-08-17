@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import CircleProgressBar from "../../components/CircleProgressBar";
-import { ViewedLectureCard, UnviewedLectureCard } from "../../components/course-detail/LectureCardStudent";
-import { AttemptedQuizCard, UnAttemptedQuizCard } from "../../components/course-detail/QuizCardStudent";
+import LectureCardStudent from "../../components/course-detail/LectureCardStudent";
+import QuizCardStudent from "../../components/course-detail/QuizCardStudent";
 import Tabs from "../../components/Tabs";
 function DetailCourseStudent() {
     const [content, setContent] = useState("lecture")
+    const [itemLecture, setItemLecture] = useState([
+        { name: "Lecture 1", url: "/", viewed: true },
+        { name: "Lecture 2", url: "/", viewed: true },
+        { name: "Lecture 3", url: "/", viewed: false },
+      ]);
+      const [itemQuiz, setItemQuiz] = useState([
+        { name: "Quiz 1", url: "/", total_question: 20, score: 90, description: "calculus", attempted: true },
+        { name: "Quiz 2", url: "/", total_question: 20, description: "calculus", attempted: false },
+        { name: "Quiz 3", url: "/", total_question: 20, description: "calculus", attempted: false },
+      ]);
 
     return (
         <section className="bg-white h-full w-full flex justify-center px-[35px] sm:px-[70px]">
@@ -27,12 +37,26 @@ function DetailCourseStudent() {
                     <Tabs data={[{value: "lecture", label: "Lecture"}, {value: "quiz", label: "Quiz"}]} setContent={setContent}/>
                     { content === "lecture" && 
                     <div className="space-y-5 mt-[64px]">
-                        <ViewedLectureCard name="Lecture 1" url="/" />
-                        <UnviewedLectureCard name="Lecture 2" url="/" />
+                        {itemLecture.map((item, index) => {
+                        return (
+                        <LectureCardStudent
+                            key={index}
+                            id={index}
+                            item={item}
+                        />
+                        );
+                    })}
                     </div> }
                     { content === "quiz" && <div className="space-y-5 mt-[64px]">
-                        <AttemptedQuizCard name="Calculus IIA" score={90} total_question={12} description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur" />
-                        <UnAttemptedQuizCard name="Calculus IIA" total_question={12} description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur" />
+                        {itemQuiz.map((item, index) => {
+                            return (
+                            <QuizCardStudent
+                                key={index}
+                                id={index}
+                                item={item}
+                            />
+                            );
+                        })}
                     </div> }
                 </div>
             </div>
