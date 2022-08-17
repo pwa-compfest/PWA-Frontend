@@ -63,7 +63,7 @@ return (
       <div className="hidden lg:mt-0 xl:block">
         <img src="/images/landing_page-2.png" alt="mockup" />
       </div>
-      <div className="xl:w-[550px] mx-auto place-self-center rounded-2xl shadow-xl px-6 py-6">
+      <div className="xl:w-[550px] place-self-center rounded-2xl shadow-xl px-6 py-6">
         <p className="pretitle mb-2">FOR STUDENT</p>
         <p className="h2">
           Learn and Test Your Knowledge in Anything for{" "}
@@ -93,7 +93,7 @@ return (
   <div id="bottom"></div>
   <section className="px-12 md:px-[100px] xl:px-[180px] bg-white h-[100vh] md:rounded-[100px] rounded-[64px]">
     <div className="flex justify-between h-[calc(100%-100px)] items-center">
-      <div className="xl:w-[550px] mx-auto place-self-center rounded-2xl shadow-xl px-6 py-6">
+      <div className="xl:w-[550px] place-self-center rounded-2xl shadow-xl px-6 py-6">
         <p className="pretitle mb-2">FOR INSTRUCTOR</p>
         <p className="h2">
           Reach More Student Anywhere, Anytime for{" "}
