@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CircleProgressBar from "../../components/CircleProgressBar";
 import LectureCardInstructor from "../../components/course-detail/LectureCardInstructor";
 import QuizCardInstructor from "../../components/course-detail/QuizCardInstructor";
 import Tabs from "../../components/Tabs";
@@ -71,9 +70,6 @@ function DetailCourseInstructor() {
                                 <p>Students: 1234</p>
                                 <p className="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
                             </div>
-                        </div>
-                        <div className="min-w-[100px] max-w-[100px]">
-                            <CircleProgressBar value={50}/>
                         </div>
                     </div>
                     <div className="flex flex-row items-center space-x-4">
