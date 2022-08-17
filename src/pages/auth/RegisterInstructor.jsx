@@ -3,9 +3,24 @@ import UserDetails from "../../components/register-form/UserDetails";
 import PersonalDetailsInstructor from "../../components/register-form/PersonalDetailsInstructor";
 import NextPersonalDetails from "../../components/register-form/NextPersonalDetails";
 import ProfilePicture from "../../components/register-form/ProfilePicture";
+import RequestSent from "../../components/RequestSent";
 
 function RegisterStudent(){
-  const [currentStep, setCurrentStep] = useState(1)
+  const initialValue = {
+    email: "",
+    password: "",
+    confirmPassword: "",
+    name: "",
+    nip: "",
+    expertise: "",
+    phoneNumber: "",
+    gender: "",
+    profilePicture: "" 
+  };
+
+  const [currentStep, setCurrentStep] = useState(1);
+  const [submitState, setSubmitState] = useState(false);
+  const [value, setValue] = useState(initialValue);
 
   function nextStep(e) {
     e.preventDefault()
@@ -17,16 +32,22 @@ function RegisterStudent(){
     setCurrentStep(currentStep - 1)
   }
 
+  function onSubmit(e) {
+    e.preventDefault();
+    setSubmitState(true);
+    console.log(value);
+  }
+
   const RegisterInstructorForm = () => {
     switch(currentStep) {
       case 1:
-        return <UserDetails nextStep={nextStep} />
+        return <UserDetails nextStep={nextStep} value={value} setValue={setValue} />
       case 2:
-        return <PersonalDetailsInstructor prevStep={prevStep} nextStep={nextStep} />
+        return <PersonalDetailsInstructor prevStep={prevStep} nextStep={nextStep} value={value} setValue={setValue} />
       case 3:
-        return <NextPersonalDetails prevStep={prevStep} nextStep={nextStep} />
+        return <NextPersonalDetails prevStep={prevStep} nextStep={nextStep} value={value} setValue={setValue} />
       case 4:
-        return <ProfilePicture prevStep={prevStep}/>
+        return <ProfilePicture prevStep={prevStep} value={value} setValue={setValue} onSubmit={onSubmit} />
       default:
         // do nothing
     }
@@ -35,6 +56,8 @@ function RegisterStudent(){
 return (
 <section className="bg-white px-[30px] h-full flex items-center">
   <div className="container">
+    {!submitState ? 
+    
     <div className="flex xl:flex-row flex-col xl:space-x-[64px] space-x-[40px] justify-center">
       <div className="xl:flex xl:flex-col xl:space-y-[64px] text-center w-[500px] p-5 hidden lg:mt-0 h-full">
         <div>
@@ -54,6 +77,9 @@ return (
         <RegisterInstructorForm />
       </div>
     </div>
+      :
+      <RequestSent />
+  }
   </div>
 </section>
     )

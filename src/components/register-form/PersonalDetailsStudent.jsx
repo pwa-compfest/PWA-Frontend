@@ -1,40 +1,45 @@
-import React from "react";
+import React, { useRef } from "react";
 import Dropdown from "../Dropdown";
 
-function PersonalDetailsStudent({ prevStep, nextStep }) {
+function PersonalDetailsStudent({ value, setValue, prevStep, nextStep }) {
+    const nameRef = useRef();
+    const nisRef = useRef();
+    const majorRef = useRef();
+
+    function handleNextStep(e) {
+      e.preventDefault()
+      value.name = nameRef.current.value ? nameRef.current.value : value.name;
+      value.nis = nisRef.current.value ? nisRef.current.value : value.nis;
+      value.major = majorRef.current ? majorRef.current : value.major
+      setValue(value);
+      nextStep(e);
+    }
     return (
-      <form>
+      <form onSubmit={handleNextStep}>
         <div className="mb-5">
           <label className="label-form block">Name</label>
-          <input className="text-input mx-auto focus:outline-none" type={"text"}
-            placeholder="Your name"></input>
+          <input required className="text-input mx-auto focus:outline-none" type={"text"}
+            placeholder="Your name" defaultValue={value.name} ref={nameRef}></input>
         </div>
         <div className="mb-5">
           <label className="label-form block">NIS</label>
-          <input className="text-input mx-auto focus:outline-none" type={"number"}
-            placeholder="1234"></input>
+          <input required className="text-input mx-auto focus:outline-none" type={"number"}
+            placeholder="1234" defaultValue={value.nis} ref={nisRef}></input>
         </div>
         <div className="mb-5">
           <label className="label-form block">Major</label>
           <Dropdown
-          placeholder="Pick a major"
-          data={[{
-            value: "vcd", 
-            label: "Visual Communication Design"
-          },{
-            value: "se",
-            label: "Software Engineering"
-          },{
-            value: "cne",
-            label: "Computer Networking Engineering"
-          }]}
+          placeholder={value.major ? value.major : "Pick a major"}
+          data={["Visual Communication Design", "Software Engineering", "Computer Networking Engineering"]}
+          reference={majorRef}
+          value={value.major}
           />
         </div>
         <div className="w-full flex justify-between items-center">
             <button onClick={prevStep} className="btn-text block mt-12">
             Prev
             </button>
-            <button onClick={nextStep} className="btn-primary block mt-12">
+            <button type="submit" className="btn-primary block mt-12">
             Next
             </button>
         </div>

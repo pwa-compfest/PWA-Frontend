@@ -1,39 +1,45 @@
+import React, { useRef } from "react";
 import Dropdown from "../Dropdown";
 
-function PersonalDetailsInstructor({ prevStep, nextStep }) {
+function PersonalDetailsInstructor({ value, setValue, prevStep, nextStep }) {
+  const nameRef = useRef();
+    const nipRef = useRef();
+    const expertiseRef = useRef();
+
+    function handleNextStep(e) {
+      e.preventDefault()
+      value.name = nameRef.current.value ? nameRef.current.value : value.name;
+      value.nip = nipRef.current.value ? nipRef.current.value : value.nip;
+      value.expertise = expertiseRef.current ? expertiseRef.current : value.expertise
+      setValue(value);
+      nextStep(e);
+    }
     return (
-      <form>
+      <form onSubmit={handleNextStep}>
         <div className="mb-5">
           <label className="label-form block">Name</label>
-          <input className="text-input mx-auto focus:outline-none" type={"text"}
-            placeholder="Your name"></input>
+          <input required className="text-input mx-auto focus:outline-none" type={"text"}
+            placeholder="Your name" defaultValue={value.name} ref={nameRef}></input>
         </div>
         <div className="mb-5">
           <label className="label-form block">NIP</label>
-          <input className="text-input mx-auto focus:outline-none" type={"number"}
-            placeholder="1234"></input>
+          <input required className="text-input mx-auto focus:outline-none" type={"number"}
+            placeholder="1234" defaultValue={value.nip} ref={nipRef}></input>
         </div>
         <div className="mb-5">
           <label className="label-form block">Expertise</label>
           <Dropdown
           placeholder="Pick an expertise"
-          data={[{
-            value: "vcd", 
-            label: "Visual Communication Design"
-          },{
-            value: "se",
-            label: "Software Engineering"
-          },{
-            value: "cne",
-            label: "Computer Networking Engineering"
-          }]}
+          data={["Visual Communication Design","Software Engineering","Computer Networking Engineering"]}
+          reference={expertiseRef}
+          value={value.expertise}
           />
         </div>
         <div className="w-full flex justify-between items-center">
             <button onClick={prevStep} className="btn-text block mt-12">
             Prev
             </button>
-            <button onClick={nextStep} className="btn-primary block mt-12">
+            <button type="submit" className="btn-primary block mt-12">
             Next
             </button>
         </div>
