@@ -72,9 +72,6 @@ function DetailCourseInstructor() {
                                 <p className="body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
                             </div>
                         </div>
-                        <div className="min-w-[100px] max-w-[100px]">
-                            <CircleProgressBar value={50}/>
-                        </div>
                     </div>
                     <div className="flex flex-row items-center space-x-4">
                         <Tabs data={[{value: "lecture", label: "Lecture"}, {value: "quiz", label: "Quiz"}]} setContent={setContent}/>
