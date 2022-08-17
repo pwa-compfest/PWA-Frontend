@@ -9,6 +9,9 @@ input[type="radio"] {
 .answer-question{
   width: 23px !important
 }
+html {
+  scroll-behavior: smooth;
+}
 
 @tailwind base;
 @tailwind components;

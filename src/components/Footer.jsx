@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="grid grid-cols-6 p-8">
+    <div className="grid grid-cols-6 p-8 w-full bg-bright px-12 md:px-[100px] xl:px-[180px]">
       <div>
         <a href="/about" className="h3 text-[20px]">
           About
