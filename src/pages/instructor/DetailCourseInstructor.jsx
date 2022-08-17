@@ -148,9 +148,22 @@ function DetailCourseInstructor() {
               ]}
               setContent={setContent}
             />
-            <button className="btn-icon-primary text-[30px] px-[10px] py-[6px] flex justify-center">
-              <i class="fa-solid fa-plus"></i>
-            </button>
+            {content === "lecture" && (
+              <a
+                href="/instructor/add-lecture"
+                className="btn-icon-primary text-[30px] px-[10px] py-[6px] flex justify-center"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </a>
+            )}
+            {content === "quiz" && (
+              <a
+                href="/instructor/add-quiz"
+                className="btn-icon-primary text-[30px] px-[10px] py-[6px] flex justify-center"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </a>
+            )}
           </div>
           {content === "lecture" && (
             <div className="space-y-5 mt-[64px]">

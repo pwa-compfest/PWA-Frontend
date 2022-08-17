@@ -19,7 +19,7 @@ function AddLecture() {
   const handleAddClick = () => {
     setInputList([...inputList, { lecture: "", url: "" }]);
   };
-  
+
   return (
     <section className="bg-white md:h-[77.4vh] md:relative sm:px-[100px] px-[30px]">
       <div className="container">
@@ -54,11 +54,16 @@ function AddLecture() {
             );
           })}
 
-          <button className="btn-icon-primary mt-10" onClick={handleAddClick}>
-            +
+          <button
+            className="btn-icon-primary text-[30px] px-[10px] py-[6px] flex justify-center mt-10"
+            onClick={handleAddClick}
+          >
+            <i class="fa-solid fa-plus"></i>
           </button>
           <div className="w-[400px] mt-14 flex justify-end">
-            <button className="btn-primary mb-5">SUBMIT</button>
+            <a className="btn-primary mb-5" href="/instructor/course">
+              SUBMIT
+            </a>
           </div>
         </div>
       </div>
