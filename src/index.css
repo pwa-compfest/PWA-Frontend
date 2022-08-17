@@ -110,4 +110,16 @@ input[type="radio"] {
   .tab-selected{
     @apply bg-primary-500 text-bright shadow-glow rounded-[14px] body py-2 font-bold flex-grow
   }
+  .toast-success{
+    @apply border-l-secondary-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
+  }
+  .toast-error{
+    @apply border-l-error-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
+  }
+  .toast-warning{
+    @apply border-l-warning-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
+  }
+  .toast-info{
+    @apply border-l-primary-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
+  }
 }
