@@ -3,16 +3,23 @@ import LectureCardInstructor from "../../components/course-detail/LectureCardIns
 import QuizCardInstructor from "../../components/course-detail/QuizCardInstructor";
 import Tabs from "../../components/Tabs";
 import Modal from "../../components/Modal";
-
+import Toast from "../../components/Toast";
 function DetailCourseInstructor() {
     const [modalDisplay, setModalDisplay] = useState(false);
+    const [toastState, setToastState] = useState({ display: false })
     const [isPublic, setIsPublic] = useState(false);
-    const [content, setContent] = useState("lecture")
+    const [content, setContent] = useState("lecture");
 
     const contentTotal = 1 // cuman buat cek
     
+    function throwToast (type, content) {
+        console.log("toast thrown")
+        setToastState({ display: true, type: type, content: content })
+    }
+
     return (
         <section className="bg-white h-full w-full flex justify-center px-[35px] sm:px-[70px]">
+            {toastState.display && <Toast {...toastState} closeToast={setToastState}/>}
             {modalDisplay && 
             <Modal closeModal={() => setModalDisplay(false)}>
                 {contentTotal > 0 ?
@@ -31,7 +38,7 @@ function DetailCourseInstructor() {
                 </div>
                 <div className="flex flex-row justify-between mt-[40px]">
                     <button onClick={() => setModalDisplay(false)} className="btn-text text-error-500 enabled:hover:bg-error-50 enabled:focus:bg-error-50 enabled:active:bg-error-300">Cancel</button>
-                    <button onClick={() => {setIsPublic(!isPublic);setModalDisplay(false)}} className="btn-primary">Yes</button>
+                    <button onClick={() => {setIsPublic(!isPublic);setModalDisplay(false);throwToast("success", "success message")}} className="btn-primary">Yes</button>
                 </div>
                 </> 
                 :

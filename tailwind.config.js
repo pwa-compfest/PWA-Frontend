@@ -13,7 +13,6 @@ module.exports = {
       fontFamily: {
         poppins: "Poppins, sans-serif",
         work: "Work Sans, sans-serif",
-        
       },
       colors: {
         "primary-50": "#D8DDF6",
@@ -46,6 +45,17 @@ module.exports = {
       },
       boxShadow: {
         glow: "0px 4px 10px #8B98E5",
+      },
+      keyframes: {
+        slideIn: {
+          "0%": { transform: "translateY(-10%)", opacity: 0 },
+          "20%": { transform: "translateY(0)", opacity: 1 },
+          "80%": { transform: "translateY(0)", opacity: 1 },
+          "100%": { transform: "translateY(-10%)", opacity: 0 },
+        },
+      },
+      animation: {
+        slideIn: "slideIn 2s ease-in-out",
       },
     },
   },
