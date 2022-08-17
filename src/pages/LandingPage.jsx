@@ -1,26 +1,29 @@
 import React from "react";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+
 function LandingPage() {
+  const navigate = useNavigate();
 return (
-<div className="md:h-[77.4vh] md:relative sm:px-[100px]">
+<div className="md:relative bg-gradient-to-r from-primary-500 to-secondary-500">
   <div id="top"></div>
-  <section className="bg-white xs:px-12">
-    <div className="grid mx-auto md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">
-      <div className="mr-auto place-self-center">
+  <section className="px-12 md:px-[100px] xl:px-[180px] bg-white h-[calc(100vh-100px)] md:rounded-b-[100px] rounded-b-[64px]">
+    <div className="flex justify-between h-[calc(100%-100px)] items-center">
+      <div className="xl:w-1/2">
         <p className="pretitle mb-2">HI, WELCOME TO PWA COURSE</p>
-        <h1 className="h1">
+        <h1 className="md:h1 h2">
           for{" "}
           <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-transparent bg-clip-text">
             Learning
           </span>
         </h1>
-        <h1 className="h1">
+        <h1 className="md:h1 h2">
           for{" "}
           <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-transparent bg-clip-text">
             Teaching
           </span>
         </h1>
-        <h1 className="h1">
+        <h1 className="md:h1 h2">
           for{" "}
           <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-transparent bg-clip-text">
             Free
@@ -31,13 +34,13 @@ return (
           commodo ligula eget dolor. Aenean massa. Cum sociis natoque
           penatibus et
         </p>
-        <div className="flex justify-between md:justify-start">
-          <a href="/" className="btn-primary inline-flex items-center justify-center md:mr-10">
+        <div className="flex flex-wrap justify-between md:justify-start sm:space-x-10">
+          <button onClick={() => navigate("/register/instructor")} className="btn-primary mt-2">
             INSTRUCTOR
-          </a>
-          <a href="/" className="btn-primary inline-flex items-center justify-center">
+          </button>
+          <button onClick={() => navigate("/register/student")} className="btn-primary mt-2">
             STUDENT
-          </a>
+          </button>
         </div>
       </div>
       <div className="hidden lg:mt-0 xl:block">
@@ -46,7 +49,7 @@ return (
     </div>
 
     {/* Toogle */}
-    <div className="flex justify-center mt-7">
+    <div className="flex justify-center items-end">
       <a className="btn-icon-primary items-center justify-center inline-flex" href="#middle">
         <i className="fa-solid fa-chevron-down"></i>
       </a>
@@ -54,14 +57,13 @@ return (
 
   </section>
 
-  <div id="middle" className="h-[70px]"></div>
-
-  <section className="bg-white xl:px-0 xs:px-12">
-    <div className="grid mx-auto md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">
+  <div id="middle"></div>
+  <section className="px-12 md:px-[100px] xl:px-[180px] bg-white h-[100vh] md:rounded-[100px] rounded-[64px]">
+    <div className="flex justify-between h-[calc(100%-100px)] items-center">
       <div className="hidden lg:mt-0 xl:block">
         <img src="/images/landing_page-2.png" alt="mockup" />
       </div>
-      <div className="mx-auto place-self-center rounded-2xl shadow-xl px-6 py-6">
+      <div className="xl:w-[550px] place-self-center rounded-2xl shadow-xl px-6 py-6">
         <p className="pretitle mb-2">FOR STUDENT</p>
         <p className="h2">
           Learn and Test Your Knowledge in Anything for{" "}
@@ -75,9 +77,9 @@ return (
           penatibus et
         </p>
         <div className="flex items-end justify-end">
-          <a href="/" className="btn-primary">
+          <button onClick={() => navigate("/register/student")} className="btn-primary mt-16">
             LEARN NOW
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -88,11 +90,10 @@ return (
     </div>
   </section>
 
-  <div id="bottom" className="h-[70px]"></div>
-
-  <section className="bg-white xl:px-0 xs:px-12 mb-20">
-    <div className="grid mx-auto grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">
-      <div className="place-self-center rounded-2xl shadow-xl px-6 py-6">
+  <div id="bottom"></div>
+  <section className="px-12 md:px-[100px] xl:px-[180px] bg-white h-[100vh] md:rounded-[100px] rounded-[64px]">
+    <div className="flex justify-between h-[calc(100%-100px)] items-center">
+      <div className="xl:w-[550px] place-self-center rounded-2xl shadow-xl px-6 py-6">
         <p className="pretitle mb-2">FOR INSTRUCTOR</p>
         <p className="h2">
           Reach More Student Anywhere, Anytime for{" "}
@@ -104,9 +105,9 @@ return (
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
         </p>
         <div className="flex items-end justify-end">
-          <a href="/" className="btn-primary">
+          <button onClick={() => navigate("/register/instructor")} className="btn-primary mt-16">
             TEACH NOW
-          </a>
+          </button>
         </div>
       </div>
 
