@@ -50,7 +50,7 @@ module.exports = {
         slideIn: {
           "0%": { transform: "translateY(-10%)", opacity: 0 },
           "20%": { transform: "translateY(0)", opacity: 1 },
-          "80%": { transform: "translateY(0)", opacity: 1 },
+          "90%": { transform: "translateY(0)", opacity: 1 },
           "100%": { transform: "translateY(-10%)", opacity: 0 },
         },
       },
