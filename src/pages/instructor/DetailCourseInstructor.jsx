@@ -4,8 +4,10 @@ import QuizCardInstructor from "../../components/course-detail/QuizCardInstructo
 import Tabs from "../../components/Tabs";
 import Modal from "../../components/Modal";
 import Toast from "../../components/Toast";
+import { useNavigate } from "react-router-dom";
+
 function DetailCourseInstructor() {
-  const [modalDisplay, setModalDisplay] = useState(false);
+  const [modalDisplay, setModalDisplay] = useState({ display: false });
   const [toastState, setToastState] = useState({ display: false });
   const [isPublic, setIsPublic] = useState(false);
   const [content, setContent] = useState("lecture");
@@ -14,11 +16,15 @@ function DetailCourseInstructor() {
     { name: "Lecture 2", url: "/" },
     { name: "Lecture 3", url: "/" },
   ]);
-
-  const contentTotal = 1; // cuman buat cek
+  const [itemQuiz, setItemQuiz] = useState([
+    { name: "Quiz 1", url: "/", total_question: 20, description: "calculus" },
+    { name: "Quiz 2", url: "/", total_question: 20, description: "calculus" },
+    { name: "Quiz 3", url: "/", total_question: 20, description: "calculus" },
+  ]);
+  const [contentTotal, setContentTotal] = useState(itemLecture.length + itemQuiz.length);
+  const navigate = useNavigate();
 
   function throwToast(type, content) {
-    console.log("toast thrown");
     setToastState({ display: true, type: type, content: content });
   }
 
@@ -30,13 +36,38 @@ function DetailCourseInstructor() {
     }
     setItemLecture([...itemLecture]);
   }
+
+  function handleDeleteLecture(id) {
+    itemLecture.splice(id,1)
+    setItemLecture([...itemLecture])
+    setContentTotal(contentTotal - 1)
+  }
+
+  function handleDeleteQuiz(id) {
+    itemQuiz.splice(id,1)
+    setItemQuiz([...itemQuiz])
+    setContentTotal(contentTotal - 1)
+    console.log(itemQuiz)
+  }
+
+  function handleChangeVisibility() {
+    setIsPublic(!isPublic);
+    setModalDisplay({ display: false });
+    throwToast("success", `This course is ${!isPublic ? "public" : "private"} now`);
+  }
+
+  function handleDeleteCourse() {
+    setModalDisplay(false)
+    navigate("/instructor/dashboard", {replace: true})
+  }
+
   return (
     <section className="bg-white h-full w-full flex justify-center px-[35px] sm:px-[70px]">
       {toastState.display && (
         <Toast {...toastState} closeToast={setToastState} />
       )}
-      {modalDisplay && (
-        <Modal closeModal={() => setModalDisplay(false)}>
+      {modalDisplay.content === "change-visibility" && (
+        <Modal closeModal={() => setModalDisplay({ display: false })}>
           {contentTotal > 0 ? (
             <>
               <div className="space-y-[10px] text-center">
@@ -66,11 +97,7 @@ function DetailCourseInstructor() {
                   Cancel
                 </button>
                 <button
-                  onClick={() => {
-                    setIsPublic(!isPublic);
-                    setModalDisplay(false);
-                    throwToast("success", "success message");
-                  }}
+                  onClick={handleChangeVisibility}
                   className="btn-primary"
                 >
                   Yes
@@ -97,6 +124,33 @@ function DetailCourseInstructor() {
           )}
         </Modal>
       )}
+
+      {modalDisplay.content === "delete-course" && (
+        <Modal closeModal={() => setModalDisplay({ display: false })}>
+            <>
+              <div className="space-y-[10px] text-center">
+                    <p className="h3">Delete Your Course?</p>
+                    <p className="body">
+                      Are you sure you want to delete your course? WARNING: This action can't be undone.
+                    </p>
+              </div>
+              <div className="flex flex-row justify-between mt-[40px]">
+                <button
+                  onClick={() => setModalDisplay(false)}
+                  className="btn-text text-error-500 enabled:hover:bg-error-50 enabled:focus:bg-error-50 enabled:active:bg-error-300"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleDeleteCourse}
+                  className="btn-primary"
+                >
+                  Yes
+                </button>
+              </div>
+            </>
+        </Modal>
+      )}
       <div className="container relative">
         <img
           src="/images/placeholder.png"
@@ -109,10 +163,10 @@ function DetailCourseInstructor() {
               <div className="flex flex-row items-center space-x-4">
                 <p className="xl:h2 h3">Course Name</p>
                 <button
-                  onClick={() => setModalDisplay(true)}
+                  onClick={() => setModalDisplay({ display: true, content: "change-visibility" })}
                   className="xl:h3 body text-error-500"
                 >
-                  {isPublic ? (
+                  {isPublic && contentTotal > 0 ? (
                     <div className="text-secondary-500">
                       <i class="fa-solid fa-globe" />
                     </div>
@@ -125,7 +179,7 @@ function DetailCourseInstructor() {
                 <button>
                   <i class="fa-solid fa-pencil"></i>
                 </button>
-                <button>
+                <button onClick={() => setModalDisplay({display: true, content: "delete-course"})}>
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </div>
@@ -148,24 +202,10 @@ function DetailCourseInstructor() {
               ]}
               setContent={setContent}
             />
-            {content === "lecture" && (
-              <a
-                href="/instructor/add-lecture"
-                className="btn-icon-primary text-[30px] px-[10px] py-[6px] flex justify-center"
-              >
-                <i class="fa-solid fa-plus"></i>
-              </a>
-            )}
-            {content === "quiz" && (
-              <a
-                href="/instructor/add-quiz"
-                className="btn-icon-primary text-[30px] px-[10px] py-[6px] flex justify-center"
-              >
-                <i class="fa-solid fa-plus"></i>
-              </a>
-            )}
+            <button onClick={() => navigate(`/instructor/add-${content}`)} className="btn-icon-primary text-[30px] px-[10px] py-[6px] flex justify-center"><i class="fa-solid fa-plus"></i></button>
           </div>
           {content === "lecture" && (
+            itemLecture.length > 0 ? 
             <div className="space-y-5 mt-[64px]">
               {itemLecture.map((item, index) => {
                 return (
@@ -175,24 +215,34 @@ function DetailCourseInstructor() {
                     name={item.name}
                     url={item.url}
                     onEdit={handleEdit}
+                    onDelete={handleDeleteLecture}
                   />
                 );
               })}
             </div>
+            :
+            <div className="body space-y-5 mt-[64px]">
+              You Haven't Add Any Lecture
+            </div>
           )}
           {content === "quiz" && (
+            itemQuiz.length > 0 ?
             <div className="space-y-5 mt-[64px]">
-              <QuizCardInstructor
-                name="Calculus IIA"
-                score={90}
-                total_question={12}
-                description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur"
-              />
-              <QuizCardInstructor
-                name="Calculus IIA"
-                total_question={12}
-                description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur"
-              />
+              {itemQuiz.map((item, index) => {
+                return (
+                  <QuizCardInstructor
+                    key={index}
+                    id={index}
+                    item={item}
+                    onEdit={() => navigate("/instructor/edit-quiz")}
+                    onDelete={handleDeleteQuiz}
+                  />
+                );
+              })}
+            </div>
+            :
+            <div className="body space-y-5 mt-[64px]">
+              You Haven't Add Any Quiz
             </div>
           )}
         </div>
