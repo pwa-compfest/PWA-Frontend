@@ -5,16 +5,16 @@ import QuizCardStudent from "../../components/course-detail/QuizCardStudent";
 import Tabs from "../../components/Tabs";
 function DetailCourseStudent() {
     const [content, setContent] = useState("lecture")
-    const [itemLecture, setItemLecture] = useState([
+    const itemLecture = [
         { name: "Lecture 1", url: "/", viewed: true },
         { name: "Lecture 2", url: "/", viewed: true },
         { name: "Lecture 3", url: "/", viewed: false },
-      ]);
-      const [itemQuiz, setItemQuiz] = useState([
+      ];
+      const itemQuiz = [
         { name: "Quiz 1", url: "/", total_question: 20, score: 90, description: "calculus", attempted: true },
         { name: "Quiz 2", url: "/", total_question: 20, description: "calculus", attempted: false },
         { name: "Quiz 3", url: "/", total_question: 20, description: "calculus", attempted: false },
-      ]);
+      ];
 
     return (
         <section className="bg-white h-full w-full flex justify-center px-[35px] sm:px-[70px]">
