@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CircleProgressBar from "../../components/CircleProgressBar";
 import LectureCardInstructor from "../../components/course-detail/LectureCardInstructor";
 import QuizCardInstructor from "../../components/course-detail/QuizCardInstructor";
 import Tabs from "../../components/Tabs";
