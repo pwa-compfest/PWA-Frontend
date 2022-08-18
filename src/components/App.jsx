@@ -11,7 +11,6 @@ import Verify from "../pages/admin/Verify";
 import HomePage from "../pages/HomePage";
 import RegisterStudent from "../pages/auth/RegisterStudent";
 import RegisterInstructor from "../pages/auth/RegisterInstructor";
-import RequestSent from "./RequestSent";
 import DashboardInstructor from "../pages/DashboardInstructor";
 import QuizStudent from "../pages/student/QuizStudent";
 import AddQuiz from "../pages/instructor/AddQuiz";
@@ -35,12 +34,11 @@ function App() {
             <Route path="/registered" element={<RegisteredPage />} />
             <Route path="/register/student" element={<RegisterStudent />} />
             <Route path="/register/instructor" element={<RegisterInstructor />} />
-            <Route path="/register/instructor/request-sent" element={<RequestSent />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/forgot-password/email-sent" element={<EmailSent />} />
             <Route path="/forgot-password/reset" element={<ResetPassword />} /> 
             <Route path="/admin/verify" element={<Verify />} />      
-            <Route path="/student/quiz" element={<QuizStudent />} />"   
+            <Route path="/student/quiz" element={<QuizStudent />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/student/dashboard" element={<DashboardStudent />} />
             <Route path="/instructor/dashboard" element={<DashboardInstructor />} />

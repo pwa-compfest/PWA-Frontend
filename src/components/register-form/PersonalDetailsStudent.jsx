@@ -6,14 +6,25 @@ function PersonalDetailsStudent({ value, setValue, prevStep, nextStep }) {
     const nisRef = useRef();
     const majorRef = useRef();
 
-    function handleNextStep(e) {
-      e.preventDefault()
+    function updateValue() {
       value.name = nameRef.current.value ? nameRef.current.value : value.name;
       value.nis = nisRef.current.value ? nisRef.current.value : value.nis;
       value.major = majorRef.current ? majorRef.current : value.major
       setValue(value);
+    }
+
+    function handleNextStep(e) {
+      e.preventDefault();
+      updateValue();
       nextStep(e);
     }
+
+    function handlePrevStep(e) {
+      e.preventDefault();
+      updateValue();
+      prevStep(e);
+    }
+
     return (
       <form onSubmit={handleNextStep}>
         <div className="mb-5">
@@ -36,7 +47,7 @@ function PersonalDetailsStudent({ value, setValue, prevStep, nextStep }) {
           />
         </div>
         <div className="w-full flex justify-between items-center">
-            <button onClick={prevStep} className="btn-text block mt-12">
+            <button onClick={handlePrevStep} className="btn-text block mt-12">
             Prev
             </button>
             <button type="submit" className="btn-primary block mt-12">
