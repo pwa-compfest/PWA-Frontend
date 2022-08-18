@@ -7,6 +7,7 @@ const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({ loggedIn: false });
+  // eslint-disable-next-line
   const [cookies, setCookie] = useCookies(["PWA_LMS_AT", "PWA_LMS_RT"]);
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export function AuthContextProvider({ children }) {
         })
         .finally(() => setLoading(false));
     }
-  }, []);
+  }, [cookies.PWA_LMS_RT]);
 
   const value = {
     currentUser,

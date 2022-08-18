@@ -22,6 +22,7 @@ function VerificationPage() {
         navigate("/", { replace: true });
       })
       .finally(() => setLoading(false));
+    // eslint-disable-next-line
   }, [token, userId]);
 
   return (
