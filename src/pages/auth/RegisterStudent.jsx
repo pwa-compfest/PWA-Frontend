@@ -3,20 +3,22 @@ import UserDetails from "../../components/register-form/UserDetails";
 import PersonalDetailsStudent from "../../components/register-form/PersonalDetailsStudent";
 import NextPersonalDetails from "../../components/register-form/NextPersonalDetails";
 import ProfilePicture from "../../components/register-form/ProfilePicture";
-import axios from 'axios';
+import axios from "../../api/axios";
 import Toast from "../../components/Toast";
 
 function RegisterStudent(){
   const initialValue = {
+    role: "STUDENT",
     email: "",
     password: "",
     confirmPassword: "",
     name: "",
-    nis: "",
-    major: "",
+    nisn: "",
+    majority: "",
+    grade: "",
     phoneNumber: "",
     gender: "",
-    profilePicture: "" 
+    photo: "" 
   }
   const [currentStep, setCurrentStep] = useState(1);
   const [submitState, setSubmitState] = useState(false);
@@ -38,16 +40,22 @@ function RegisterStudent(){
     e.preventDefault();
 
     setLoading(true);
-    axios.post(`https://jsonplaceholder.typicode.com/posts`, value)
+    axios.post(`/auth/signup`, JSON.stringify(value),
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+    )
       .then((res) => {
-        console.log(res);
         setSubmitState(true);
       }).catch((err) => {
-        setMessage({ display: true, type: "error", content: "Something is wrong." })
+        if (err.response?.status === 403) {
+          setMessage({ display: true, type: "error", content: err.response.data.message.errors[0].message })
+        } else {
+          setMessage({ display: true, type: "error", content: "Something is wrong." })
+        }
       }).finally(() => {
         setLoading(false);
       })
-    console.log(value);
   }
 
   const RegisterStudentForm = () => {

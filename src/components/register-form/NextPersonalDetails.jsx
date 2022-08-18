@@ -36,7 +36,7 @@ function PersonalDetails({ prevStep, nextStep, value, setValue }) {
           <label className="label-form block">Gender</label>
           <Dropdown
           placeholder={value.gender ? value.gender : "Pick a gender"}
-          data={["Female", "Male"]}
+          data={["FEMALE", "MALE"]}
           reference={genderRef}
           value={value.gender}
           />

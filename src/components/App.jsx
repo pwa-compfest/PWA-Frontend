@@ -31,7 +31,7 @@ function App() {
             <Route exact path="/" element={<LandingPage />} />
             <Route path="/login" element={<SignIn />} />
             <Route path="/register" element={<SignUp />} />
-            <Route path="/registered" element={<RegisteredPage />} />
+            <Route path="/account/verify/[:token]/[:userId]" element={<RegisteredPage />} />
             <Route path="/register/student" element={<RegisterStudent />} />
             <Route path="/register/instructor" element={<RegisterInstructor />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
