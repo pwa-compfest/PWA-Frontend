@@ -27,6 +27,7 @@ function VerificationPage() {
   return (
     <>
       {!loading ? (
+        // role still hard coded for testing purposes
         <RegisteredPage role="instructor" />
       ) : (
         <section className="bg-white md:h-[77.4vh] md:relative sm:px-[100px] px-[30px]">
