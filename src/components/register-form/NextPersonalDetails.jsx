@@ -5,12 +5,22 @@ function PersonalDetails({ prevStep, nextStep, value, setValue }) {
     const phoneNumberRef = useRef();
     const genderRef = useRef();
 
-    function handleNextStep(e) {
-      e.preventDefault()
+    function updateValue() {
       value.phoneNumber = phoneNumberRef.current.value ? phoneNumberRef.current.value : value.phoneNumber;
       value.gender = genderRef.current ? genderRef.current : value.gender;
       setValue(value);
+    }
+
+    function handleNextStep(e) {
+      e.preventDefault();
+      updateValue();
       nextStep(e);
+    }
+
+    function handlePrevStep(e) {
+      e.preventDefault();
+      updateValue();
+      prevStep(e);
     }
     return (
       <form onSubmit={handleNextStep}>
@@ -32,7 +42,7 @@ function PersonalDetails({ prevStep, nextStep, value, setValue }) {
           />
         </div>
         <div className="w-full flex justify-between items-center">
-            <button onClick={prevStep} className="btn-text block mt-12">
+            <button onClick={handlePrevStep} className="btn-text block mt-12">
             Prev
             </button>
             <button type="submit" className="btn-primary block mt-12">

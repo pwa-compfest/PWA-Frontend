@@ -125,4 +125,7 @@ html {
   .toast-info{
     @apply border-l-primary-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
   }
+  .loading-spinner{
+    @apply w-[50px] h-[50px] border-[10px] border-solid border-primary-50 border-t-[10px] border-t-primary-500 animate-spin rounded-full
+  }
 }

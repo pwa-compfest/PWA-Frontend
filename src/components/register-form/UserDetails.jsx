@@ -35,7 +35,7 @@ function UserDetails({ value, setValue, nextStep }) {
         </div>
         <div className="mb-5">
           <label className="label-form block">Password</label>
-          <input required className="text-input mx-auto focus:outline-none" type={"password"} minLength={16}
+          <input required className="text-input mx-auto focus:outline-none" type={"password"} minLength={8}
             placeholder="enter password" defaultValue={value.password} ref={passwordRef}></input>
         </div>
         <div className="mb-5">

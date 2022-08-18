@@ -3,12 +3,23 @@ import React, { useRef } from "react";
 function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
   const profilePictureRef = useRef();
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function updateValue() {
     value.profilePicture = profilePictureRef.current.value ? profilePictureRef.current.value : value.profilePicture;
     setValue(value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    updateValue();
     onSubmit(e);
   }
+
+  function handlePrevStep(e) {
+    e.preventDefault();
+    updateValue();
+    prevStep(e);
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-12 text-neutral-100 text-[100px] flex justify-center">
@@ -24,7 +35,7 @@ function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
         />
       </div>
       <div className="w-full flex justify-between items-center">
-          <button onClick={prevStep} className="btn-text block mt-12">
+          <button onClick={handlePrevStep} className="btn-text block mt-12">
           Prev
           </button>
           <button type="submit" className="btn-primary block mt-12">
