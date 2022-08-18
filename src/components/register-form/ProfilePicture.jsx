@@ -1,27 +1,39 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import Toast from "../Toast"
 
 function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
   const profilePictureRef = useRef();
+  const [message, setMessage] = useState({ display: false });
+  async function updateValue(input) {
+    const reader = new FileReader();
 
-  function updateValue() {
-    value.profilePicture = profilePictureRef.current.value ? profilePictureRef.current.value : value.profilePicture;
-    setValue(value);
+    reader.onload = () => {
+      if (reader.result == null) {
+        setMessage({ display: true, type: "error", content: "Failed to read file. Please reupload the file."})
+        return
+      }
+      
+      setMessage({ display: true, type: "success", content: "File uploaded."})
+      value.profilePicture = reader.result;
+      setValue(value);
+    }
+    reader.readAsDataURL(input[0]);
   }
-
+  
   function handleSubmit(e) {
     e.preventDefault()
-    updateValue();
     onSubmit(e);
   }
 
   function handlePrevStep(e) {
     e.preventDefault();
-    updateValue();
+    value.profilePicture = "";
     prevStep(e);
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      {message.display && <Toast {...message} closeToast={setMessage} />}
       <div className="mb-12 text-neutral-100 text-[100px] flex justify-center">
           <i class="fa-solid fa-circle-user"></i>
       </div>
@@ -30,7 +42,8 @@ function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
         <input
         className="file-input"
         type={"file"}
-        accept="image/png, image/jpg, image/jpeg"
+        accept="image/*"
+        onChange={(e) => updateValue(e.target.files)}
         ref={profilePictureRef}
         />
       </div>
