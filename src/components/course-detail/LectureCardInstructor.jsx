@@ -18,18 +18,26 @@ function LectureCardInstructor(props) {
   function submitChange(e) {
     props.onEdit(item, props.id);
     setitem({ name: "", url: "" });
-    setModalDisplay({ display: false});
-    setToastState({ display: true, type: "success", content: "Lecture updated" });
+    setModalDisplay({ display: false });
+    setToastState({
+      display: true,
+      type: "success",
+      content: "Lecture updated",
+    });
   }
 
   function handleDeleteLecture() {
     props.onDelete(props.id);
-    setModalDisplay({ display: false});
-    setToastState({ display: true, type: "success", content: "Lecture deleted." });
+    setModalDisplay({ display: false });
+    setToastState({
+      display: true,
+      type: "success",
+      content: "Lecture deleted.",
+    });
   }
 
   return (
-    <section> 
+    <section>
       {toastState.display && (
         <Toast {...toastState} closeToast={setToastState} />
       )}
@@ -68,36 +76,42 @@ function LectureCardInstructor(props) {
       )}
       {modalDisplay.content === "delete-lecture" && (
         <Modal closeModal={() => setModalDisplay({ display: false })}>
-            <>
+          <>
             <div className="space-y-[10px] text-center">
-                    <p className="h3">Delete Your Lecture?</p>
-                    <p className="body">
-                    Are you sure you want to delete your lecture? WARNING: This action can't be undone.
-                    </p>
+              <p className="h3">Delete Your Lecture?</p>
+              <p className="body">
+                Are you sure you want to delete your lecture? WARNING: This
+                action can't be undone.
+              </p>
             </div>
             <div className="flex flex-row justify-between mt-[40px]">
-                <button
+              <button
                 onClick={() => setModalDisplay(false)}
                 className="btn-text text-error-500 enabled:hover:bg-error-50 enabled:focus:bg-error-50 enabled:active:bg-error-300"
-                >
+              >
                 Cancel
-                </button>
-                <button
-                onClick={handleDeleteLecture}
-                className="btn-primary"
-                >
+              </button>
+              <button onClick={handleDeleteLecture} className="btn-primary">
                 Yes
-                </button>
+              </button>
             </div>
-            </>
+          </>
         </Modal>
       )}
       <div className="relative shadow-md px-[40px] py-[20px] rounded-[24px] space-y-[40px] w-full">
         <div className="text-neutral-100 space-x-2 absolute top-4 right-[80px]">
-          <button onClick={() => setModalDisplay({ display: true, content: "edit-lecture" })}>
+          <button
+            onClick={() =>
+              setModalDisplay({ display: true, content: "edit-lecture" })
+            }
+          >
             <i class="fa-solid fa-pencil"></i>
           </button>
-          <button onClick={() => setModalDisplay({ display: true, content: "delete-lecture" })}>
+          <button
+            onClick={() =>
+              setModalDisplay({ display: true, content: "delete-lecture" })
+            }
+          >
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
