@@ -36,12 +36,12 @@ function UserDetails({ value, setValue, nextStep }) {
         <div className="mb-5">
           <label className="label-form block">Password</label>
           <input required className="text-input mx-auto focus:outline-none" type={"password"} minLength={8}
-            placeholder="enter password" defaultValue={value.password} ref={passwordRef}></input>
+            placeholder="enter password" ref={passwordRef}></input>
         </div>
         <div className="mb-5">
           <label className="label-form block">Confirm Password</label>
           <input required className="text-input mx-auto focus:outline-none" type={"password"}
-            placeholder="enter password" defaultValue={value.confirmPassword} ref={confirmPasswordRef}></input>
+            placeholder="enter password" ref={confirmPasswordRef}></input>
         </div>
         <div className="w-full flex justify-end">
             <button type="submit" className="btn-primary block mt-12">
