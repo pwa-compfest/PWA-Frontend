@@ -12,10 +12,10 @@ function Dropdown({ placeholder, data, reference, value }) {
             </button>
             <input className="opacity-0 w-full absolute bottom-0" value={selected} onChange={() => null} required/>
             {openSelection &&
-            <ul className="selection-container w-full absolute z-[1]">
+            <ul className="selection-container w-full absolute z-[4] top-[50px]">
                 {data.map((item, index) => {
                     return (
-                        <li onClick={() => {setSelected(item);setOpenSelection(false);reference.current = item}} key={index} className="selection-label body">
+                        <li onClick={() => {setSelected(item);setOpenSelection(false);reference.current = item.toString()}} key={index} className="selection-label body">
                             {item}
                         </li>
                     )

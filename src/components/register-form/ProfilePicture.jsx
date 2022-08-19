@@ -1,33 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useRef } from "react";
 import Toast from "../Toast"
 
 function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
-  const profilePictureRef = useRef();
   const [message, setMessage] = useState({ display: false });
-  async function updateValue(input) {
-    const reader = new FileReader();
+  const photoRef = useRef();
 
-    reader.onload = () => {
-      if (reader.result == null) {
-        setMessage({ display: true, type: "error", content: "Failed to read file. Please reupload the file."})
-        return
-      }
-      
-      setMessage({ display: true, type: "success", content: "File uploaded."})
-      value.profilePicture = reader.result;
-      setValue(value);
-    }
-    reader.readAsDataURL(input[0]);
-  }
-  
   function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
+    value.photo = photoRef.current.files[0];
+    setValue(value)
     onSubmit(e);
   }
 
   function handlePrevStep(e) {
     e.preventDefault();
-    value.profilePicture = "";
     prevStep(e);
   }
 
@@ -43,8 +29,8 @@ function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
         className="file-input"
         type={"file"}
         accept="image/*"
-        onChange={(e) => updateValue(e.target.files)}
-        ref={profilePictureRef}
+        encType='multipart/form-data'
+        ref={photoRef}
         />
       </div>
       <div className="w-full flex justify-between items-center">
