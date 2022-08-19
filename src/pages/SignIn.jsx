@@ -26,7 +26,7 @@ function SignIn() {
     const formData = new FormData();
     formData.append("email", value.email);
     formData.append("password", value.password);
-    setValue({ email: "", password: "" });
+    setValue({ password: "" });
 
     axios
       .post(`/auth/signin`, formData, {
@@ -40,7 +40,7 @@ function SignIn() {
           setMessage({
             display: true,
             type: "error",
-            content: err.response.data.message.errors[0].message,
+            content: "Invalid Credentials",
           });
         } else {
           setMessage({
