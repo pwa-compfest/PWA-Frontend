@@ -4,9 +4,8 @@ import axios from "../api/axios";
 import Toast from "../components/Toast";
 
 function SignIn() {
-  const initialValue = { email: "", password: "" };
   const navigate = useNavigate();
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState({ email: "", password: "" });
   const [message, setMessage] = useState({ display: false });
 
   function handleChange(e) {
@@ -23,26 +22,24 @@ function SignIn() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("email", value.email);
-    formData.append("password", value.password);
-    setValue({ password: "" });
-
     axios
-      .post(`/auth/signin`, formData, {
+      .post(`/auth/signin`, value, {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
+        console.log(res);
         navigate(`/home`);
       })
       .catch((err) => {
         if (err.response?.status === 403) {
+          setValue({ email: value.email, password: "" });
           setMessage({
             display: true,
             type: "error",
             content: "Invalid Credentials",
           });
         } else {
+          setValue({ email: value.email, password: "" });
           setMessage({
             display: true,
             type: "error",
