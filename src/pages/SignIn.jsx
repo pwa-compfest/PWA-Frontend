@@ -27,8 +27,7 @@ function SignIn() {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
-        console.log(res);
-        navigate(`/home`);
+        navigate(`/dashboard`);
       })
       .catch((err) => {
         if (err.response?.status === 403) {
@@ -78,6 +77,7 @@ function SignIn() {
                   name="email"
                   value={value.email}
                   onChange={handleChange}
+                  autoComplete="off"
                   required
                 ></input>
               </div>
