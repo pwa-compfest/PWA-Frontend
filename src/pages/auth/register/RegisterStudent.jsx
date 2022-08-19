@@ -53,7 +53,7 @@ function RegisterStudent() {
     formData.append("phoneNumber", value.phoneNumber);
     formData.append("gender", value.gender);
     formData.append("role", value.role);
-
+    console.log(value);
     axios
       .post(`/auth/signup`, formData, {
         headers: { "Content-Type": "application/json" },

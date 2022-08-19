@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function RegisteredPage({ role }) {
+function RegisteredPage() {
   const navigate = useNavigate();
 
   return (
@@ -27,9 +27,7 @@ function RegisteredPage({ role }) {
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.{" "}
               </p>
               <button
-                onClick={() =>
-                  navigate(`/${role}/dashboard`, { replace: true })
-                }
+                onClick={() => navigate(`/dashboard`, { replace: true })}
                 className="btn-primary mt-10"
               >
                 VIEW DASHBOARD

@@ -6,7 +6,7 @@ import ProfilePicture from "../../../components/register-form/ProfilePicture";
 import axios from "../../../api/axios";
 import Toast from "../../../components/Toast";
 
-function RegisterStudent() {
+function RegisterInstructor() {
   const initialValue = {
     role: "INSTRUCTOR",
     email: "",
@@ -17,7 +17,7 @@ function RegisterStudent() {
     expertise: "",
     phoneNumber: "",
     gender: "",
-    profilePicture: "",
+    photo: "",
   };
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -51,6 +51,7 @@ function RegisterStudent() {
     formData.append("phoneNumber", value.phoneNumber);
     formData.append("gender", value.gender);
     formData.append("role", value.role);
+    console.log(value);
     axios
       .post(`/auth/signup`, formData, {
         headers: { "Content-Type": "application/json" },
@@ -175,4 +176,4 @@ function RegisterStudent() {
   );
 }
 
-export default RegisterStudent;
+export default RegisterInstructor;

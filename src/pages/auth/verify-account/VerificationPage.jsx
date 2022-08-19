@@ -16,6 +16,7 @@ function VerificationPage() {
       })
       .then((res) => {
         console.log(res);
+        localStorage.setItem("PWA_LMS_AT", res.data.data.accessToken);
       })
       .catch((err) => {
         console.log(err);
@@ -28,8 +29,7 @@ function VerificationPage() {
   return (
     <>
       {!loading ? (
-        // role still hard coded for testing purposes
-        <RegisteredPage role="instructor" />
+        <RegisteredPage />
       ) : (
         <section className="bg-white md:h-[77.4vh] md:relative sm:px-[100px] px-[30px]">
           <div className="h-full w-full flex flex-col justify-center items-center">

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Toast from "../Toast"
+import Toast from "../Toast";
 
 function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
   const [message, setMessage] = useState({ display: false });
@@ -8,7 +8,7 @@ function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
   function handleSubmit(e) {
     e.preventDefault();
     value.photo = photoRef.current.files[0];
-    setValue(value)
+    setValue(value);
     onSubmit(e);
   }
 
@@ -21,28 +21,28 @@ function PersonalDetails({ prevStep, value, setValue, onSubmit }) {
     <form onSubmit={handleSubmit}>
       {message.display && <Toast {...message} closeToast={setMessage} />}
       <div className="mb-12 text-neutral-100 text-[100px] flex justify-center">
-          <i class="fa-solid fa-circle-user"></i>
+        <i class="fa-solid fa-circle-user"></i>
       </div>
       <div className="mb-5">
         <label className="label-form block">Profile picture (optional)</label>
         <input
-        className="file-input"
-        type={"file"}
-        accept="image/*"
-        encType='multipart/form-data'
-        ref={photoRef}
+          className="file-input"
+          type={"file"}
+          accept="image/*"
+          encType="multipart/form-data"
+          ref={photoRef}
         />
       </div>
       <div className="w-full flex justify-between items-center">
-          <button onClick={handlePrevStep} className="btn-text block mt-12">
+        <button onClick={handlePrevStep} className="btn-text block mt-12">
           Prev
-          </button>
-          <button type="submit" className="btn-primary block mt-12">
+        </button>
+        <button type="submit" className="btn-primary block mt-12">
           Submit
-          </button>
+        </button>
       </div>
     </form>
-    )
+  );
 }
 
 export default PersonalDetails;

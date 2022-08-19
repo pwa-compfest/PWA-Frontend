@@ -1,31 +1,25 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "../api/axios";
-import { useCookies } from "react-cookie";
 
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({ loggedIn: false });
-  // eslint-disable-next-line
-  const [cookies, setCookie] = useCookies(["PWA_LMS_AT", "PWA_LMS_RT"]);
 
   useEffect(() => {
-    if (cookies.PWA_LMS_RT) {
+    if (localStorage.getItem("PWA_LMS_AT")) {
       setLoading(true);
       axios
         .get(`/users/data`, {
           headers: {
-            "content-Type": "application/json",
-            Accept: "/",
-            "Cache-Control": "no-cache",
-            Cookie: document.cookie,
+            Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
           },
-          credentials: "same-origin",
           withCredentials: true,
         })
         .then((res) => {
           console.log(res);
+          setCurrentUser({ loggedIn: true, ...res.data.data });
         })
         .catch((err) => {
           console.log(err);
@@ -33,7 +27,7 @@ export function AuthContextProvider({ children }) {
         })
         .finally(() => setLoading(false));
     }
-  }, [cookies.PWA_LMS_RT]);
+  }, []);
 
   const value = {
     currentUser,
@@ -47,6 +41,6 @@ export function AuthContextProvider({ children }) {
   );
 }
 
-export default function useAuthentication() {
+export default function useAuth() {
   return useContext(AuthContext);
 }

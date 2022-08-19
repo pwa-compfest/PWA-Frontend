@@ -54,12 +54,21 @@ function App() {
                   element={<ResetPassword />}
                 />
                 <Route path="/admin/verify" element={<Verify />} />
-                <Route path="/student/quiz" element={<QuizStudent />} />
+
                 <Route path="/home" element={<HomePage />} />
+                <Route
+                  path="/student/quiz/:courseId/:quizId"
+                  element={<QuizStudent />}
+                />
                 <Route
                   path="/student/dashboard"
                   element={<DashboardStudent />}
                 />
+                <Route
+                  path="/student/course"
+                  element={<DetailCourseStudent />}
+                />
+
                 <Route
                   path="/instructor/dashboard"
                   element={<DashboardInstructor />}
@@ -70,18 +79,6 @@ function App() {
                 />
                 <Route path="/instructor/add-quiz" element={<AddQuiz />} />
                 <Route path="/instructor/add-course" element={<AddCourse />} />
-                <Route
-                  path="/instructor/dashboard"
-                  element={<DashboardInstructor />}
-                />
-                <Route
-                  path="/student/course"
-                  element={<DetailCourseStudent />}
-                />
-                <Route
-                  path="/student/dashboard"
-                  element={<DashboardStudent />}
-                />
                 <Route
                   path="/instructor/course"
                   element={<DetailCourseInstructor />}
