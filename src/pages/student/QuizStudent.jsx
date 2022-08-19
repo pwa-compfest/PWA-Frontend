@@ -62,6 +62,7 @@ function QuizStudent() {
       .finally(() => {
         setLoading(false);
       });
+    // eslint-disable-next-line
   }, [courseId, quizId]);
 
   function handleSubmit() {

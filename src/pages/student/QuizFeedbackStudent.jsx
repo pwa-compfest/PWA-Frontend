@@ -67,6 +67,7 @@ function QuizFeedbackStudent({ questionData, quizData }) {
         setQuizResult(dummy);
       })
       .finally(() => setLoading(false));
+    // eslint-disable-next-line
   }, [quizId, questionData]);
 
   return (
