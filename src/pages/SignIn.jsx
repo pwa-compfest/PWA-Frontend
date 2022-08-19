@@ -27,7 +27,7 @@ function SignIn() {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
-        navigate(`/dashboard`);
+        navigate(`/`);
       })
       .catch((err) => {
         if (err.response?.status === 403) {
