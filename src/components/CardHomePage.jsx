@@ -52,11 +52,11 @@ function CardHomePage(props) {
             <div className="overflow-hidden relative rounded-t-[24px]">
               <img
                 className="object-contain"
-                src="/images/placeholder.png"
+                src={item.getSignedUrl}
                 alt="course-img"
               />
               <div className="bg-neutral-50 px-3 py-1 body text-neutral-500 rounded-[20px] absolute right-5 top-5">
-                {item.totalStudent} students
+                {item.totalStudent} Students
               </div>
             </div>
             <div className="p-5 relative">
