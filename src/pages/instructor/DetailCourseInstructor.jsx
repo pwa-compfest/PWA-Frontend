@@ -75,12 +75,7 @@ function DetailCourseInstructor() {
 
   function getLectureList() {
     axios
-      .get(`/lectures/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/lectures/${courseId}`)
       .then((res) => {
         console.log(res);
         setLectureList(res.data.data);
@@ -92,12 +87,7 @@ function DetailCourseInstructor() {
 
   function getQuizList() {
     axios
-      .get(`/quizzes/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/quizzes/${courseId}`)
       .then((res) => {
         console.log(res);
         setQuizList(res.data.data);
@@ -110,12 +100,7 @@ function DetailCourseInstructor() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/courses/instructor/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/courses/instructor/${courseId}`)
       .then((res) => {
         console.log(res);
         setCourseData(res.data.data);

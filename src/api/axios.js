@@ -5,4 +5,8 @@ export default axios.create({
     Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
   },
   withCredentials: true,
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 415e815 (fix student progress bugs and add routing)

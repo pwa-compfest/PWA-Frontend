@@ -15,12 +15,7 @@ function ChangeVisibilityModal({
   function handleChangeVisibility() {
     setLoading(true);
     axios
-      .put(`/courses/${changeTo}/${id}`, null, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .put(`/courses/${changeTo}/${id}`, null)
       .then((res) => {
         console.log(res);
         onChangeVisibility();

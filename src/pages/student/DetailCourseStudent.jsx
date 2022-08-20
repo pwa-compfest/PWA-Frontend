@@ -17,6 +17,18 @@ function DetailCourseStudent() {
   const { courseId } = useParams();
   const navigate = useNavigate();
 
+  function calcProgress(studentProgress, lectureList) {
+    let visited = 0;
+    const total = lectureList.length;
+
+    lectureList.forEach((item) => {
+      if (Object.keys(studentProgress).includes(item.id.toString())) {
+        visited = visited + 1;
+      }
+    });
+
+    return Math.floor((visited / total) * 100);
+  }
   function getImage(file) {
     axios
       .get(`/image/courses/${file}`)
@@ -31,12 +43,7 @@ function DetailCourseStudent() {
 
   function getLectureList() {
     axios
-      .get(`/lectures/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/lectures/${courseId}`)
       .then((res) => {
         console.log(res);
         setLectureList(res.data.data);
@@ -49,12 +56,7 @@ function DetailCourseStudent() {
 
   function getQuizList() {
     axios
-      .get(`/quizzes/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/quizzes/${courseId}`)
       .then((res) => {
         console.log(res);
         setQuizList(res.data.data);
@@ -66,12 +68,7 @@ function DetailCourseStudent() {
 
   function getStudentProgress() {
     axios
-      .get(`/lectures/student-progress/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/lectures/student-progress/${courseId}`)
       .then((res) => {
         console.log(res);
         if (res.data.data.visited_lecture !== null) {
@@ -86,12 +83,7 @@ function DetailCourseStudent() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/courses/me/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/courses/me/${courseId}`)
       .then((res) => {
         console.log(res);
         getStudentProgress();
@@ -135,10 +127,7 @@ function DetailCourseStudent() {
               </div>
               <div className="min-w-[100px] max-w-[100px]">
                 <CircleProgressBar
-                  value={Math.floor(
-                    (Object.keys(studentProgress).length / lectureList.length) *
-                      100
-                  )}
+                  value={calcProgress(studentProgress, lectureList)}
                 />
               </div>
             </div>

@@ -13,12 +13,7 @@ function DeleteLectureModal({
     setLoading(true);
     console.log(lectureId);
     axios
-      .delete(`/lectures/${lectureId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .delete(`/lectures/${lectureId}`)
       .then((res) => {
         console.log(res);
         onDelete();

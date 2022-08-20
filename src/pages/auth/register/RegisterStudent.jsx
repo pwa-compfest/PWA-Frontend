@@ -66,7 +66,7 @@ function RegisterStudent() {
           setMessage({
             display: true,
             type: "error",
-            content: err.response.data.message.errors[0].message,
+            content: "Email must be unique.",
           });
         } else {
           setMessage({

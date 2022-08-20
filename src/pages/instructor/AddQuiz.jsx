@@ -63,9 +63,7 @@ function QuizInstructor() {
       .post(`/quizzes/`, JSON.stringify(body), {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
         },
-        withCredentials: true,
       })
       .then((res) => {
         console.log(res);
