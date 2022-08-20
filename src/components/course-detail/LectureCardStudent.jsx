@@ -24,7 +24,7 @@ export default function LectureCardStudent({
       )
       .then((res) => {
         setViewed(true);
-        window.location.href(item.url);
+        window.open(item.url);
       })
       .catch((err) => {})
       .finally(() => setLoading(false));
