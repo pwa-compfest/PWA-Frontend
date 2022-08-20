@@ -20,12 +20,9 @@ function QuizFeedbackStudent({ questionData, quizData }) {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
         setQuizResult(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch((err) => {})
       .finally(() => setLoading(false));
     // eslint-disable-next-line
   }, [quizId, questionData]);

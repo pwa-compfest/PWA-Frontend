@@ -9,7 +9,6 @@ function CardVerifyInstructor() {
   useEffect(() => {
     axios.get(`/instructor`).then((res) => {
       setData(res.data.data);
-      console.log(res);
     });
   }, []);
 
@@ -33,7 +32,6 @@ function CardVerifyInstructor() {
     axios
       .put(`/instructor/reject/${id}`)
       .then((res) => {
-        console.log(res);
         setCurrentItems((prevItems) => {
           return prevItems.filter((item, index) => {
             return index !== idx;
@@ -45,16 +43,13 @@ function CardVerifyInstructor() {
           content: "Success reject instructor",
         });
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   function handleVerify(id, idx) {
     axios
       .put(`/instructor/verify/${id}`)
       .then((res) => {
-        console.log(res);
         setCurrentItems((prevItems) => {
           return prevItems.filter((item, index) => {
             return index !== idx;
@@ -66,9 +61,7 @@ function CardVerifyInstructor() {
           content: "Success verify instructor",
         });
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   return (
@@ -78,10 +71,9 @@ function CardVerifyInstructor() {
       )}
       {currentItems.map((item, idx) => {
         return (
-           
           <div className="bg-bright max-w-md mx-auto md:max-w-2xl w-[300px] pt-12 h-[450px] place-self-center rounded-[24px] shadow-xl mt-12">
             <div className="mb-10 flex justify-center">
-              <img src="/images/user.png"  alt="instructor-img" />
+              <img src="/images/user.png" alt="instructor-img" />
             </div>
             <div className="text-left font-work px-8">
               <span className="text-xl font-medium">Prof. Dr. {item.name}</span>
