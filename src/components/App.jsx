@@ -14,7 +14,7 @@ import DashboardInstructor from "../pages/DashboardInstructor";
 import QuizStudent from "../pages/student/QuizStudent";
 import AddQuiz from "../pages/instructor/AddQuiz";
 import AddLecture from "../pages/AddLecture";
-import AddCourse from "../pages/AddCourse";
+import AddCourse from "../pages/instructor/AddCourse";
 import DashboardStudent from "../pages/DashboardStudent";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContextProvider } from "../context/AuthContext";
