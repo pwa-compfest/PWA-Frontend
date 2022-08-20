@@ -6,7 +6,7 @@ function VerifyInstructor() {
   const [content, setContent] = useState("instructor")
   return (
   <div className="mt-12">
-    <div className="bg-whit emd:relative sm:px-[100px]">
+    <div className="bg-white md:relative sm:px-[100px]">
       <div className="flex justify-center mb-12">
         <h2 className="h2">Dashboard</h2>
       </div>

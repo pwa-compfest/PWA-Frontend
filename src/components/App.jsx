@@ -59,7 +59,7 @@ function App() {
                 <Route
                   path="/student/quiz/:courseId/:quizId"
                   element={<QuizStudent />}
-                />
+                />    
                 <Route
                   path="/student/dashboard"
                   element={<DashboardStudent />}
