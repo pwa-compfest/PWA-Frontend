@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
+import axios from "../api/axios";
 import CardHomePage from "../components/CardHomePage";
 
 function HomePage() {
   const [items, setItems] = useState([]);
+
+  const getItems = async () => {
+    const { items } = await axios.get(`/courses`);
+    setItems(items);
+  };
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/albums/1/photos").then(
-      (response) =>
-        response.json().then((data) => {
-          setItems(data);
-        })
-    );
+    getItems();
   }, []);
+
   return (
     <section className="bg-white px-[30px]">
       <div className="container">

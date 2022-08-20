@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
 import Toast from "../Toast";
+import DeleteLectureModal from "./DeleteLectureModal";
 function LectureCardInstructor(props) {
   const [modalDisplay, setModalDisplay] = useState({ display: false });
   const [item, setitem] = useState({ name: "", url: "" });
@@ -16,23 +17,13 @@ function LectureCardInstructor(props) {
     });
   }
   function submitChange(e) {
-    props.onEdit(item, props.id);
+    props.onEdit(item, props.item.id);
     setitem({ name: "", url: "" });
     setModalDisplay({ display: false });
     setToastState({
       display: true,
       type: "success",
       content: "Lecture updated",
-    });
-  }
-
-  function handleDeleteLecture() {
-    props.onDelete(props.id);
-    setModalDisplay({ display: false });
-    setToastState({
-      display: true,
-      type: "success",
-      content: "Lecture deleted.",
     });
   }
 
@@ -75,28 +66,13 @@ function LectureCardInstructor(props) {
         </Modal>
       )}
       {modalDisplay.content === "delete-lecture" && (
-        <Modal closeModal={() => setModalDisplay({ display: false })}>
-          <>
-            <div className="space-y-[10px] text-center">
-              <p className="h3">Delete Your Lecture?</p>
-              <p className="body">
-                Are you sure you want to delete your lecture? WARNING: This
-                action can't be undone.
-              </p>
-            </div>
-            <div className="flex flex-row justify-between mt-[40px]">
-              <button
-                onClick={() => setModalDisplay(false)}
-                className="btn-text text-error-500 enabled:hover:bg-error-50 enabled:focus:bg-error-50 enabled:active:bg-error-300"
-              >
-                Cancel
-              </button>
-              <button onClick={handleDeleteLecture} className="btn-primary">
-                Yes
-              </button>
-            </div>
-          </>
-        </Modal>
+        <DeleteLectureModal
+          setModalDisplay={setModalDisplay}
+          setMessage={setToastState}
+          lectureId={props.item.id}
+          onDelete={props.onDelete}
+          setLoadContent={props.setLoadContent}
+        />
       )}
       <div className="relative shadow-md px-[40px] py-[20px] rounded-[24px] space-y-[40px] w-full">
         <div className="text-neutral-100 space-x-2 absolute top-4 right-[80px]">
@@ -115,9 +91,14 @@ function LectureCardInstructor(props) {
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
-        <p className="subtitle text-neutral-500">{props.name}</p>
+        <p className="subtitle text-neutral-500">{props.item.title}</p>
         <div className="flex justify-end">
-          <button className="btn-text md:w-fit w-full">Preview</button>
+          <button
+            onClick={() => window.open(props.item.url)}
+            className="btn-text md:w-fit w-full"
+          >
+            Preview
+          </button>
         </div>
       </div>
     </section>

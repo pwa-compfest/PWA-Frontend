@@ -1,37 +1,51 @@
-import React,{useState} from 'react'
-function QuizStudent(){
-    const [answer,setAnswer] = useState()
-    const handleOptionChange = (e) => {
-        setAnswer(e.target.value)
+import React, { useState } from "react";
+function CardQuestionStudent(props) {
+  const [answer, setAnswer] = useState();
+
+  const handleOptionChange = (e) => {
+    setAnswer(e.target.value);
+    const objIdx = props.questionData.findIndex(
+      (obj) => obj.questionId === props.question.id
+    );
+
+    const value = {
+      questionId: props.question.id,
+      studentAnswer: e.target.value,
+    };
+
+    if (objIdx !== -1) {
+      props.questionData[objIdx] = value;
+    } else {
+      props.questionData.push(value);
     }
 
-    return (
-        <div>
-            <div className='bg-white w-auto h-auto rounded-[24px] shadow-card p-[40px] mb-5'>
-                <span className='small-text'> Question 1/90 </span>
-                <p className='body mt-5 mb-5'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. 
-                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur</p>
-                <div className='mb-3 body flex justify-start'>
-                    <input type="radio" className='mr-3' value="1" onChange={handleOptionChange} checked={answer === '1'} /> Choice 1
-                </div>
-                <div className='mb-3 body flex justify-start wrong-answer'>
-                    <input type="radio" className='mr-3' value="2" onChange={handleOptionChange} checked={answer === '2'} /> Choice 2
-                </div>
-                <div className='mb-3 body flex justify-start'>
-                    <input type="radio" className='mr-3' value="3" onChange={handleOptionChange} checked={answer === '3'} /> Choice 3
-                </div>
-                <div className='mb-3 body flex justify-start correct-answer'>
-                    <input type="radio" className='mr-3' value="4" onChange={handleOptionChange} checked={answer === '4'} /> Choice 4
-                </div>
-            </div>
-            <div className='flex justify-end pt-12 py-12'>
-                {/* <button className='btn-primary'>SUBMIT ANSWER</button> */}
-                <div className='text-primary-500'>
-                    <a href="/" className='button-text mr-12'>RETAKE QUIZ</a>
-                    <a href="/home" className='button-text'>COURSE PAGE</a>
-                </div>
-            </div>
-        </div>
-    )
+    props.setQuestionData(props.questionData);
+    console.log(props.questionData);
+  };
+
+  return (
+    <div className="lg:w-[100vw-200px] w-[calc(100vw-160px)]">
+      <div className="bg-white w-auto h-auto rounded-[24px] shadow-card p-[40px] mb-5">
+        <span className="small-text">
+          Quesion {props.index + 1}/{props.total}
+        </span>
+        <p className="body mt-5 mb-5">{props.question.question}</p>
+        {Object.keys(props.question.answer).map((key) => {
+          return (
+            <form required key={key} className="mb-3 body flex justify-start">
+              <input
+                type="radio"
+                className="mr-3"
+                value={key}
+                onChange={handleOptionChange}
+                checked={answer === key}
+              />{" "}
+              {props.question.answer[key]}
+            </form>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
-export default QuizStudent
+export default CardQuestionStudent;

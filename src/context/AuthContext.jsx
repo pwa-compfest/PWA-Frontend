@@ -4,7 +4,7 @@ import axios from "../api/axios";
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState({ loggedIn: false });
 
   useEffect(() => {
@@ -19,13 +19,15 @@ export function AuthContextProvider({ children }) {
         })
         .then((res) => {
           console.log(res);
-          setCurrentUser({ loggedIn: true, ...res.data.data });
+          setCurrentUser({ loggedIn: true, role: res.data.data.role });
         })
         .catch((err) => {
           console.log(err);
           setCurrentUser({ loggedIn: false });
         })
         .finally(() => setLoading(false));
+    } else {
+      setLoading(false);
     }
   }, []);
 
