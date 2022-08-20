@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./Navbar";
 import LandingPage from "../pages/LandingPage";
 import ForgotPassword from "../pages/auth/forgot-password/ForgotPassword";
-import EmailSent from "../pages/auth/forgot-password/EmailSent";
 import ResetPassword from "../pages/auth/forgot-password/ResetPassword";
 import VerificationPage from "../pages/auth/verify-account/VerificationPage";
 import SignIn from "../pages/SignIn";
@@ -54,11 +53,7 @@ function App() {
                 />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route
-                  path="/forgot-password/email-sent"
-                  element={<EmailSent />}
-                />
-                <Route
-                  path="/forgot-password/reset"
+                  path="/password/verify/:token/:userId"
                   element={<ResetPassword />}
                 />
                 <Route path="/admin/verify" element={<Verify />} />
@@ -67,7 +62,7 @@ function App() {
                 <Route
                   path="/student/quiz/:courseId/:quizId"
                   element={<QuizStudent />}
-                />
+                />    
                 <Route
                   path="/student/dashboard"
                   element={<DashboardStudent />}

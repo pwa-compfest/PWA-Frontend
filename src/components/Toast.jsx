@@ -7,7 +7,7 @@ const ToastManage = {
                 <div className="toast-success flex flex-row justify-between">
                     <div className="flex flex-row items-center space-x-[24px]">
                         <div className="text-secondary-500 text-[48px]">
-                        <i class="fa-solid fa-circle-check"></i>
+                        <i className="fa-solid fa-circle-check"></i>
                         </div>
                         <div>
                             <p className="h3 text-neutral-500">Success</p>
@@ -15,7 +15,7 @@ const ToastManage = {
                         </div>
                     </div>
                     <button onClick={() => closeToast({ display: false })} className="text-neutral-500">
-                    <i class="fa-solid fa-xmark"></i>
+                    <i className="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             )
@@ -27,7 +27,7 @@ const ToastManage = {
                 <div className="toast-error flex flex-row justify-between">
                     <div className="flex flex-row items-center space-x-[24px]">
                         <div className="text-error-500 text-[48px]">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                         </div>
                         <div>
                             <p className="h3 text-neutral-500">Error</p>
@@ -35,7 +35,7 @@ const ToastManage = {
                         </div>
                     </div>
                     <button onClick={() => closeToast({ display: false })} className="text-neutral-500">
-                    <i class="fa-solid fa-xmark"></i>
+                    <i className="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             )
@@ -47,7 +47,7 @@ const ToastManage = {
                 <div className="toast-warning flex flex-row justify-between">
                     <div className="flex flex-row items-center space-x-[24px]">
                         <div className="text-warning-500 text-[48px]">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                         </div>
                         <div>
                             <p className="h3 text-neutral-500">Warning</p>
@@ -55,7 +55,7 @@ const ToastManage = {
                         </div>
                     </div>
                     <button onClick={() => closeToast({ display: false })} className="text-neutral-500">
-                    <i class="fa-solid fa-xmark"></i>
+                    <i className="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             )
@@ -67,7 +67,7 @@ const ToastManage = {
                 <div className="toast-info flex flex-row justify-between">
                     <div className="flex flex-row items-center space-x-[24px]">
                         <div className="text-primary-500 text-[48px]">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                         </div>
                         <div>
                             <p className="h3 text-neutral-500">Info</p>
@@ -75,7 +75,7 @@ const ToastManage = {
                         </div>
                     </div>
                     <button onClick={() => closeToast({ display: false })} className="text-neutral-500">
-                    <i class="fa-solid fa-xmark"></i>
+                    <i className="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             )
