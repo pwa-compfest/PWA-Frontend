@@ -13,6 +13,7 @@ function DeleteCourseModal({ setModalDisplay, id, setMessage }) {
         navigate("/", { replace: true });
       })
       .catch((err) => {
+        console.log(err);
         setModalDisplay({ display: false });
         setMessage({
           display: true,
