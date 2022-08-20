@@ -8,18 +8,11 @@ function DeleteCourseModal({ setModalDisplay, id, setMessage }) {
   function handleDeleteCourse() {
     setLoading(true);
     axios
-      .delete(`/courses/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .delete(`/courses/${id}`)
       .then((res) => {
-        console.log(res);
         navigate("/", { replace: true });
       })
       .catch((err) => {
-        console.log(err);
         setModalDisplay({ display: false });
         setMessage({
           display: true,

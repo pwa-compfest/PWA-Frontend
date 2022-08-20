@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./Navbar";
 import LandingPage from "../pages/LandingPage";
 import ForgotPassword from "../pages/auth/forgot-password/ForgotPassword";
-import EmailSent from "../pages/auth/forgot-password/EmailSent";
 import ResetPassword from "../pages/auth/forgot-password/ResetPassword";
 import VerificationPage from "../pages/auth/verify-account/VerificationPage";
 import SignIn from "../pages/SignIn";
@@ -17,60 +16,55 @@ import AddQuiz from "../pages/instructor/AddQuiz";
 import AddLecture from "../pages/AddLecture";
 import AddCourse from "../pages/AddCourse";
 import DashboardStudent from "../pages/DashboardStudent";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthContextProvider } from "../context/AuthContext";
-import { CookiesProvider } from "react-cookie";
 import DetailCourseInstructor from "../pages/instructor/DetailCourseInstructor";
 import DetailCourseStudent from "../pages/student/DetailCourseStudent";
 
+// Context
+import { AuthContextProvider } from "../context/AuthContext";
+
+// Route
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProtectedRoute from "../routes/ProtectedRoute";
+import RestrictedRoute from "../routes/RestrictedRoute";
+
+const ROLE = {
+  STUDENT: "STUDENT",
+  INSTRUCTOR: "INSTRUCTOR",
+  ADMIN: "ADMIN",
+};
+
 function App() {
   return (
-    <CookiesProvider>
-      <AuthContextProvider>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <div className="content h-[80vh]  mt-8">
-              <Routes>
-                <Route
-                  path="/instructor/course/:courseId"
-                  element={<DetailCourseInstructor />}
-                />
-                <Route
-                  path="/student/course/:courseId"
-                  element={<DetailCourseStudent />}
-                />
+    <AuthContextProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div className="content h-[80vh]  mt-8">
+            <Routes>
+              <Route element={<RestrictedRoute />}>
                 <Route exact path="/" element={<LandingPage />} />
                 <Route path="/login" element={<SignIn />} />
                 <Route path="/register" element={<SignUp />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route
-                  path="/account/verify/:token/:userId"
-                  element={<VerificationPage />}
+                  path="/password/verify/:token/:userId"
+                  element={<ResetPassword />}
                 />
                 <Route path="/register/student" element={<RegisterStudent />} />
                 <Route
                   path="/register/instructor"
                   element={<RegisterInstructor />}
                 />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route
-                  path="/forgot-password/email-sent"
-                  element={<EmailSent />}
+                  path="/account/verify/:token/:userId"
+                  element={<VerificationPage />}
                 />
-                <Route
-                  path="/forgot-password/reset"
-                  element={<ResetPassword />}
-                />
-                <Route path="/admin/verify" element={<Verify />} />
+              </Route>
 
-                <Route path="/home" element={<HomePage />} />
+              <Route element={<ProtectedRoute role={ROLE.INSTRUCTOR} />}>
                 <Route
-                  path="/student/quiz/:courseId/:quizId"
-                  element={<QuizStudent />}
-                />
-                <Route
-                  path="/student/dashboard"
-                  element={<DashboardStudent />}
+                  path="/instructor/course/:courseId"
+                  element={<DetailCourseInstructor />}
                 />
                 <Route
                   path="/instructor/dashboard"
@@ -85,12 +79,32 @@ function App() {
                   element={<AddQuiz />}
                 />
                 <Route path="/instructor/add-course" element={<AddCourse />} />
-              </Routes>
-            </div>
+              </Route>
+
+              <Route element={<ProtectedRoute role={ROLE.STUDENT} />}>
+                <Route
+                  path="/student/course/:courseId"
+                  element={<DetailCourseStudent />}
+                />
+                <Route path="/home" element={<HomePage />} />
+                <Route
+                  path="/student/quiz/:courseId/:quizId"
+                  element={<QuizStudent />}
+                />
+                <Route
+                  path="/student/dashboard"
+                  element={<DashboardStudent />}
+                />
+              </Route>
+
+              <Route element={<ProtectedRoute role={ROLE.ADMIN} />}>
+                <Route path="/admin/verify" element={<Verify />} />
+              </Route>
+            </Routes>
           </div>
-        </Router>
-      </AuthContextProvider>
-    </CookiesProvider>
+        </div>
+      </Router>
+    </AuthContextProvider>
   );
 }
 export default App;

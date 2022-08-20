@@ -57,22 +57,17 @@ function QuizInstructor() {
       description: descRef.current.value,
       questions: inputList,
     };
-    console.log(JSON.stringify(body));
     setLoading(true);
     axios
       .post(`/quizzes/`, JSON.stringify(body), {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
         },
-        withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
         navigate(`/instructor/course/${courseId}`);
       })
       .catch((err) => {
-        console.log(err);
         setMessage({
           display: true,
           type: "error",
