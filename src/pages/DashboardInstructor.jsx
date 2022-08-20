@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
+import axios from "../api/axios";
 import CardDashboardInstructor from "../components/CardDashboardInstructor";
 
 function DashboardInstructor() {
   const [items, setItems] = useState([]);
+  const getItems = async () => {
+    const { items } = await axios.get(`/courses/instructor`);
+    setItems(items);
+  };
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/albums/1/photos").then(
-      (response) =>
-        response.json().then((data) => {
-          setItems(data);
-        })
-    );
+    getItems();
   }, []);
   const totalCourse = items.length;
   return (
