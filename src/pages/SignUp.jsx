@@ -2,15 +2,15 @@ import React from "react";
 
 function SignUp() {
   return (
-    <section className="md:h-[77.4vh] md:relative sm:px-[100px]">
-      <div className="grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 ">
-        <div className="justify-center items-center justify-items-center hidden lg:mt-0 xl:block">
+    <section className="bg-white px-[30px] h-full flex justify-center items-center">
+      <div className="flex xl:flex-row flex-col xl:space-x-[64px] space-x-[40px]">
+        <div className="xl:flex xl:flex-col xl:space-y-[64px] text-center w-[500px] p-5 hidden lg:mt-0 h-full">
           <div className="justify-center sm:grid items-center">
             <img src="/images/sign_up.png" alt="mockup" />
           </div>
         </div>
         <div className="flex items-center justify-center px-[40px]">
-          <div className="mx-auto place-self-center lg:col-span-7 rounded-2xl shadow-xl px-6 py-6">
+          <div className="mx-auto lg:col-span-7 rounded-2xl shadow-xl px-6 py-6">
             <h3 className="h3 text-center">
               What do you want to do in PWA Course?
             </h3>
