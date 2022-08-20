@@ -26,14 +26,14 @@ function CardHomePage(props) {
     axios
       .post(`/courses/enroll/${id}`)
       .then((res) => {
-        setToastState({
+        setMessage({
           display: true,
           type: "success",
           content: "Success enroll course",
         });
       })
       .catch((err) => {
-        setToastState({
+        setMessage({
           display: true,
           type: "error",
           content: "Already enroll course",
