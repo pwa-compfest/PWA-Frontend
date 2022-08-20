@@ -4,13 +4,12 @@ import CardDashboardInstructor from "../components/CardDashboardInstructor";
 
 function DashboardInstructor() {
   const [items, setItems] = useState([]);
-  const getItems = async () => {
-    const { items } = await axios.get(`/courses/instructor`);
-    setItems(items);
-  };
 
   useEffect(() => {
-    getItems();
+    axios.get(`/courses/instructor`).then((res) => {
+      setItems(res.data.data);
+      console.log(res);
+    });
   }, []);
   const totalCourse = items.length;
   return (

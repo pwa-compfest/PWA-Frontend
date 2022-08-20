@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "../../api/axios";
 import Modal from "../Modal";
 import Toast from "../Toast";
 import DeleteLectureModal from "./DeleteLectureModal";
 function LectureCardInstructor(props) {
   const [modalDisplay, setModalDisplay] = useState({ display: false });
-  const [item, setitem] = useState({ name: "", url: "" });
+  const [item, setitem] = useState({
+    id: props.item.id,
+    title: props.item.title,
+    url: props.item.url,
+  });
   const [toastState, setToastState] = useState({ display: false });
-
+  let { courseId } = useParams();
   function handleChange(e) {
     const { name, value } = e.target;
     setitem((prevItem) => {
@@ -17,8 +23,13 @@ function LectureCardInstructor(props) {
     });
   }
   function submitChange(e) {
-    props.onEdit(item, props.item.id);
-    setitem({ name: "", url: "" });
+    props.onEdit(item, props.idx);
+    const req = { courseId: courseId, title: item.title, url: item.url };
+
+    axios
+      .put(`/lectures/${props.item.id}`, req)
+      .then((res) => console.log(res));
+    setitem({ title: "", url: "" });
     setModalDisplay({ display: false });
     setToastState({
       display: true,
@@ -42,8 +53,8 @@ function LectureCardInstructor(props) {
                 <input
                   className="text-input mb-4"
                   placeholder="current lecture name"
-                  name="name"
-                  value={item.name}
+                  name="title"
+                  value={item.title}
                   onChange={handleChange}
                 />
                 <label className="label-form">URL</label>
