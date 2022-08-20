@@ -29,7 +29,7 @@ function CardDashboardStudent(props) {
             <div className="overflow-hidden relative rounded-t-[24px]">
               <img
                 className="object-contain"
-                src="/images/placeholder.png"
+                src={item.getSignedUrl}
                 alt="courses-img"
               />
             </div>
