@@ -52,17 +52,12 @@ function QuizCardInstructor({ id, item, onEdit, onDelete }) {
             </button>
           </div>
           <div>
-            <p className="subtitle text-neutral-500">{item.name}</p>
+            <p className="subtitle text-neutral-500">{item.title}</p>
             <p className="body text-neutral-500">
-              Total question: {item.total_question}
+              Total question: {item.total_questions}
             </p>
           </div>
-          <p className="body text-neutral-500">{item.description}</p>
-        </div>
-        <div className="flex justify-end">
-          <a href={item.url} className="btn-text md:w-fit w-full">
-            Preview
-          </a>
+          <p className="body text-neutral-500 pb-10">{item.description}</p>
         </div>
       </div>
     </section>

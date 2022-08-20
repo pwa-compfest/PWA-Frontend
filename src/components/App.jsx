@@ -16,13 +16,11 @@ import QuizStudent from "../pages/student/QuizStudent";
 import AddQuiz from "../pages/instructor/AddQuiz";
 import AddLecture from "../pages/AddLecture";
 import AddCourse from "../pages/AddCourse";
-import DetailCourseStudent from "../pages/student/DetailCourseStudent";
 import DashboardStudent from "../pages/DashboardStudent";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import DetailCourseInstructor from "../pages/instructor/DetailCourseInstructor";
 import { AuthContextProvider } from "../context/AuthContext";
 import { CookiesProvider } from "react-cookie";
-
+import DetailCourse from "../pages/DetailCourse";
 function App() {
   return (
     <CookiesProvider>
@@ -32,6 +30,7 @@ function App() {
             <Navbar />
             <div className="content h-[80vh]  mt-8">
               <Routes>
+                <Route path="/course/:courseId" element={<DetailCourse />} />
                 <Route exact path="/" element={<LandingPage />} />
                 <Route path="/login" element={<SignIn />} />
                 <Route path="/register" element={<SignUp />} />
@@ -65,24 +64,18 @@ function App() {
                   element={<DashboardStudent />}
                 />
                 <Route
-                  path="/student/course"
-                  element={<DetailCourseStudent />}
-                />
-
-                <Route
                   path="/instructor/dashboard"
                   element={<DashboardInstructor />}
                 />
                 <Route
-                  path="/instructor/add-lecture"
+                  path="/instructor/course/:courseId/add-lecture"
                   element={<AddLecture />}
                 />
-                <Route path="/instructor/add-quiz" element={<AddQuiz />} />
-                <Route path="/instructor/add-course" element={<AddCourse />} />
                 <Route
-                  path="/instructor/course"
-                  element={<DetailCourseInstructor />}
+                  path="/instructor/course/:courseId/add-quiz"
+                  element={<AddQuiz />}
                 />
+                <Route path="/instructor/add-course" element={<AddCourse />} />
               </Routes>
             </div>
           </div>
