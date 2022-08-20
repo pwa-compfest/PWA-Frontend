@@ -3,7 +3,6 @@ import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
 function CardDashboardInstructor(props, context) {
   const { data } = props;
-  const  dataImage  = context
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
