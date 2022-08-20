@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "../api/axios";
-
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
@@ -28,26 +27,23 @@ export function AuthContextProvider({ children }) {
   }, []);
 
   function signOut() {
-    setCurrentUser({ loggedIn: false });
-    localStorage.removeItem("PWA_LMS_AT");
+    axios
+      .post(`/auth/signout`)
+      .then((res) => {
+        setCurrentUser({ loggedIn: false });
+        localStorage.removeItem("PWA_LMS_AT");
+        window.location.href("/");
+      })
+      .catch((err) => {});
   }
 
   function getRole() {
     return currentUser.role;
   }
 
-  function isAuthorized() {
-    if (!currentUser.loggedIn) {
-      return false;
-    }
-
-    return true;
-  }
-
   const value = {
     signOut,
     getRole,
-    isAuthorized,
   };
 
   return (
