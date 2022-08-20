@@ -6,7 +6,7 @@ import ResetPassword from "../pages/auth/forgot-password/ResetPassword";
 import VerificationPage from "../pages/auth/verify-account/VerificationPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import Verify from "../pages/admin/Verify";
+import DashboardAdmin from "../pages/admin/DashboardAdmin";
 import HomePage from "../pages/HomePage";
 import RegisterStudent from "../pages/auth/register/RegisterStudent";
 import RegisterInstructor from "../pages/auth/register/RegisterInstructor";
@@ -81,8 +81,15 @@ function App() {
                   element={<AddQuiz />}
                 />
                 <Route path="/instructor/add-course" element={<AddCourse />} />
-                <Route path="/instructor/edit-course/:courseId" element={<EditCourse />} />
+                <Route
+                  path="/instructor/edit-course/:courseId"
+                  element={<EditCourse />}
+                />
                 <Route path="/instructor/edit-quiz" element={<EditQuiz />} />
+                <Route
+                  path="/instructor/edit-course/:courseId"
+                  element={<EditCourse />}
+                />
               </Route>
 
               <Route element={<ProtectedRoute role={ROLE.STUDENT} />}>
@@ -102,7 +109,7 @@ function App() {
               </Route>
 
               <Route element={<ProtectedRoute role={ROLE.ADMIN} />}>
-                <Route path="/admin/verify" element={<Verify />} />
+                <Route path="/admin/dashboard" element={<DashboardAdmin />} />
               </Route>
 
               <Route path="*" element={<LandingPage />} />

@@ -28,7 +28,7 @@ function CardHomePage(props) {
       .then((res) => {
         setToastState({
           display: true,
-          type: "Success",
+          type: "success",
           content: "Success enroll course",
         });
       })

@@ -148,6 +148,7 @@ function DetailCourseInstructor() {
                 <div className="flex flex-row items-center space-x-4">
                   <p className="xl:h2 h3">{courseData.title}</p>
                   <button
+                    disabled={!courseData.is_verified}
                     onClick={() =>
                       setModalDisplay({
                         display: true,
@@ -166,8 +167,13 @@ function DetailCourseInstructor() {
                   </button>
                 </div>
                 <div className="text-neutral-100 space-x-2 absolute top-4 right-[80px]">
-                  <button>
-                    <i onClick={() => navigate(`/instructor/edit-course/${courseData.id}`)} className="fa-solid fa-pencil"></i>
+                  <button disabled={!courseData.is_verified}>
+                    <i
+                      onClick={() =>
+                        navigate(`/instructor/edit-course/${courseData.id}`)
+                      }
+                      className="fa-solid fa-pencil"
+                    ></i>
                   </button>
                   <button
                     onClick={() =>
@@ -181,6 +187,9 @@ function DetailCourseInstructor() {
                   </button>
                 </div>
                 <div className="xl:subtitle body text-neutral-500 space-y-1">
+                  {!courseData.is_verified && (
+                    <p className="subtitle">Not Verified</p>
+                  )}
                   <p>Instructor: {courseData.instructors.name}</p>
                   <p>Students: {courseData.totalStudent}</p>
                   <p className="body">{courseData.description}</p>
@@ -196,6 +205,7 @@ function DetailCourseInstructor() {
                 setContent={setContent}
               />
               <button
+                disabled={!courseData.is_verified}
                 onClick={() =>
                   navigate(`/instructor/course/${courseData.id}/add-${content}`)
                 }
