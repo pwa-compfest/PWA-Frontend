@@ -7,7 +7,6 @@ function DashboardStudent() {
   useEffect(() => {
     axios.get(`/courses/me`).then((res) => {
       setItems(res.data.data);
-      console.log(res);
     });
   }, []);
   const totalCourse = items.length;

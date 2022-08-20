@@ -11,18 +11,14 @@ export function AuthContextProvider({ children }) {
     if (localStorage.getItem("PWA_LMS_AT")) {
       setLoading(true);
       axios
-        .get(`/users/data`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-          },
-          withCredentials: true,
-        })
+        .get(`/users/data`)
         .then((res) => {
-          console.log(res);
           setCurrentUser({ loggedIn: true, role: res.data.data.role });
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response?.status === 401) {
+            localStorage.removeItem("PWA_LMS_AT");
+          }
           setCurrentUser({ loggedIn: false });
         })
         .finally(() => setLoading(false));
@@ -31,9 +27,27 @@ export function AuthContextProvider({ children }) {
     }
   }, []);
 
+  function signOut() {
+    setCurrentUser({ loggedIn: false });
+    localStorage.removeItem("PWA_LMS_AT");
+  }
+
+  function getRole() {
+    return currentUser.role;
+  }
+
+  function isAuthorized() {
+    if (!currentUser.loggedIn) {
+      return false;
+    }
+
+    return true;
+  }
+
   const value = {
-    currentUser,
-    setCurrentUser,
+    signOut,
+    getRole,
+    isAuthorized,
   };
 
   return (

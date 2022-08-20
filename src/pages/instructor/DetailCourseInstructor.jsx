@@ -65,66 +65,40 @@ function DetailCourseInstructor() {
     axios
       .get(`/image/courses/${file}`)
       .then((res) => {
-        console.log(res);
         setImage(res.data.url);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   function getLectureList() {
     axios
-      .get(`/lectures/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/lectures/${courseId}`)
       .then((res) => {
-        console.log(res);
         setLectureList(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   function getQuizList() {
     axios
-      .get(`/quizzes/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/quizzes/${courseId}`)
       .then((res) => {
-        console.log(res);
         setQuizList(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/courses/instructor/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/courses/instructor/${courseId}`)
       .then((res) => {
-        console.log(res);
         setCourseData(res.data.data);
         getImage(res.data.data.image);
         getLectureList();
         getQuizList();
       })
       .catch((err) => {
-        console.log(err);
         if (err.response.status === 401) {
           // UNAUTHORIZED
           navigate("/login");

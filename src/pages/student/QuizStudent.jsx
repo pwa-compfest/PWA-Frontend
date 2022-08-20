@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "../../api/axios";
 import CardQuestionStudent from "../../components/CardQuestionStudent";
 import QuizFeedbackStudent from "./QuizFeedbackStudent";
+import Toast from "../../components/Toast";
 
 function QuizStudent() {
   const [quizData, setQuizData] = useState([]);
@@ -10,16 +11,12 @@ function QuizStudent() {
   const { courseId, quizId } = useParams();
   const [questionData, setQuestionData] = useState([]);
   const [submitted, setSubmitted] = useState(false);
+  const [message, setMessage] = useState({ display: false });
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/quizzes/quiz/${courseId}/${quizId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/quizzes/quiz/${courseId}/${quizId}`)
       .then((res) => {
         console.log(res);
         setQuizData(res.data.data);
@@ -35,12 +32,21 @@ function QuizStudent() {
 
   function handleSubmit() {
     console.log(questionData);
+    if (questionData.length !== quizData.length) {
+      setMessage({
+        display: true,
+        type: "error",
+        content: "Please answer all question.",
+      });
+      return;
+    }
     setSubmitted(true);
   }
   return (
     <>
       {!submitted ? (
         <section className="bg-bright h-auto mt-12">
+          {message.display && <Toast {...message} closeToast={setMessage} />}
           {!loading && (
             <>
               <div className="flex flex-wrap justify-between px-[80px] lg:px-[100px] ">
@@ -73,7 +79,11 @@ function QuizStudent() {
                   );
                 })}
                 <div className="flex justify-end pt-12 py-12">
-                  <button onClick={handleSubmit} className="btn-primary">
+                  <button
+                    type="submit"
+                    onClick={handleSubmit}
+                    className="btn-primary"
+                  >
                     SUBMIT ANSWER
                   </button>
                 </div>

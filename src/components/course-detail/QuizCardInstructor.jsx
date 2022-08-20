@@ -10,18 +10,11 @@ function QuizCardInstructor({ item, onEdit, setLoadContent, onDelete }) {
   function handleDeleteQuiz() {
     setLoading(true);
     axios
-      .delete(`/quizzes/${item.id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .delete(`/quizzes/${item.id}`)
       .then((res) => {
-        console.log(res);
         onDelete();
       })
       .catch((err) => {
-        console.log(err);
         setModalDisplay(false);
         setToastState({
           display: true,

@@ -20,7 +20,6 @@ function CardQuestionStudent(props) {
     }
 
     props.setQuestionData(props.questionData);
-    console.log(props.questionData);
   };
 
   return (
@@ -32,8 +31,10 @@ function CardQuestionStudent(props) {
         <p className="body mt-5 mb-5">{props.question.question}</p>
         {Object.keys(props.question.answer).map((key) => {
           return (
-            <form required key={key} className="mb-3 body flex justify-start">
+            <div className="mb-3 body flex justify-start">
               <input
+                required
+                key={key}
                 type="radio"
                 className="mr-3"
                 value={key}
@@ -41,7 +42,7 @@ function CardQuestionStudent(props) {
                 checked={answer === key}
               />{" "}
               {props.question.answer[key]}
-            </form>
+            </div>
           );
         })}
       </div>

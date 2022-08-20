@@ -113,17 +113,20 @@ html {
   .tab-selected{
     @apply bg-primary-500 text-bright shadow-glow rounded-[14px] body py-2 font-bold flex-grow
   }
+  .toast-container{
+    @apply border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px] flex flex-row justify-between
+  }
   .toast-success{
-    @apply border-l-secondary-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
+    @apply border-l-secondary-500 text-secondary-500 text-[48px]
   }
   .toast-error{
-    @apply border-l-error-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
+    @apply border-l-error-500 text-error-500 text-[48px]
   }
   .toast-warning{
-    @apply border-l-warning-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
+    @apply border-l-warning-500 text-warning-500 text-[48px]
   }
   .toast-info{
-    @apply border-l-primary-500 border-l-8 shadow-lg w-full bg-bright rounded-[14px] px-[24px] py-[24px]
+    @apply border-l-primary-500 text-indigo-500 text-[48px]
   }
   .loading-spinner{
     @apply w-[50px] h-[50px] border-[10px] border-solid border-primary-50 border-t-[10px] border-t-primary-500 animate-spin rounded-full
