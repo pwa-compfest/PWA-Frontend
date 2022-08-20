@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
-import CircleProgressBar from "./CircleProgressBar";
 
 function CardDashboardStudent(props) {
   const { data } = props;
@@ -30,18 +29,11 @@ function CardDashboardStudent(props) {
             <div className="overflow-hidden relative rounded-t-[24px]">
               <img
                 className="object-contain"
-                src={item.getSignedUrl}
+                src="/images/placeholder.png"
                 alt="courses-img"
               />
-              <div className="bg-neutral-50 px-3 py-1 body text-neutral-500 rounded-[20px] absolute right-5 top-5">
-                {item.totalStudent} Students
-              </div>
             </div>
             <div className="p-5 relative">
-              <div className="w-[40px] mb-2">
-                {/* progress bar msh ngawur */}
-                <CircleProgressBar value={item.id} />
-              </div>
               <p className="subtitle">{item.course.title}</p>
               <p className="body text-neutral-500">
                 Prof. Dr. {item.course.instructors.name}

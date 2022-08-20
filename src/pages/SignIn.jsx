@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import Toast from "../components/Toast";
 
 function SignIn() {
-  const navigate = useNavigate();
   const [value, setValue] = useState({ email: "", password: "" });
   const [message, setMessage] = useState({ display: false });
 
