@@ -16,6 +16,7 @@ import AddQuiz from "../pages/instructor/AddQuiz";
 import AddLecture from "../pages/AddLecture";
 import AddCourse from "../pages/instructor/AddCourse";
 import EditCourse from "../pages/instructor/EditCourse";
+import EditQuiz from "../pages/instructor/EditQuiz";
 import DashboardStudent from "../pages/DashboardStudent";
 import DetailCourseInstructor from "../pages/instructor/DetailCourseInstructor";
 import DetailCourseStudent from "../pages/student/DetailCourseStudent";
@@ -81,6 +82,7 @@ function App() {
                 />
                 <Route path="/instructor/add-course" element={<AddCourse />} />
                 <Route path="/instructor/edit-course/:courseId" element={<EditCourse />} />
+                <Route path="/instructor/edit-quiz" element={<EditQuiz />} />
               </Route>
 
               <Route element={<ProtectedRoute role={ROLE.STUDENT} />}>

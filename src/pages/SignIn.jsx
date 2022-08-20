@@ -28,7 +28,7 @@ function SignIn() {
       })
       .then((res) => {
         localStorage.setItem("PWA_LMS_AT", res.data.data.accessToken);
-        navigate(`/`);
+        window.location.reload();
       })
       .catch((err) => {
         if (err.response?.status === 403) {

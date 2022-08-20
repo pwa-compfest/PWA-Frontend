@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Modal from "../Modal";
 import Toast from "../Toast";
 import axios from "../../api/axios";
+import { useNavigate } from "react-router-dom";
 
-function QuizCardInstructor({ item, onEdit, setLoadContent, onDelete }) {
+function QuizCardInstructor({ item, id, setLoadContent, onDelete }) {
   const [modalDisplay, setModalDisplay] = useState(false);
   const [toastState, setToastState] = useState({ display: false });
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   function handleDeleteQuiz() {
     setLoading(true);
     axios
@@ -66,7 +68,7 @@ function QuizCardInstructor({ item, onEdit, setLoadContent, onDelete }) {
       <div className="relative shadow-md px-[40px] py-[20px] rounded-[24px] space-y-[40px] w-full">
         <div className="space-y-[20px] max-w-[800px]">
           <div className="text-neutral-100 space-x-2 absolute top-4 right-[80px]">
-            <button onClick={onEdit}>
+            <button onClick={() => navigate(`/instructor/edit-quiz`,{state:{courseId: id, quizId: item.id}})}>
               <i class="fa-solid fa-pencil"></i>
             </button>
             <button onClick={() => setModalDisplay(true)}>

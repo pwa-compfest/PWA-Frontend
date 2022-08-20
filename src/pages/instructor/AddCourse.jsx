@@ -76,13 +76,14 @@ function AddCourse() {
                     placeholder="course description"
                     ref={description}
                   />
-                  <label className="label-form">Picture (optional)</label>
+                  <label className="label-form">Picture</label>
                   <input
                     className="file-input mb-5"
                     type={"file"}
                     accept="image/png, image/jpg, image/jpeg"
                     ref={image}
                     encType="multipart/form-data"
+                    required
                   />
                   <button
                     className="btn-primary mb-5 w-[100%]"

@@ -236,7 +236,7 @@ function DetailCourseInstructor() {
                       <QuizCardInstructor
                         key={index}
                         item={item}
-                        onEdit={() => navigate("/instructor/edit-quiz")}
+                        id={courseId}
                         onDelete={() => onDeleteQuiz(index)}
                         setLoadContent={setLoadContent}
                         setToastState={setToastState}
