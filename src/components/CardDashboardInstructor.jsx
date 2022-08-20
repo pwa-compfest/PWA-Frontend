@@ -25,9 +25,13 @@ function CardDashboardInstructor(props) {
     <>
       {currentItems.map((item) => {
         return (
-          <div className="bg-white rounded-[24px] shadow-md w-[300px] h-[380px] grid grid-rows-2 mb-3">
+          <div className="bg-white rounded-[24px] shadow-md w-[300px] h-[400px] grid grid-rows-2 mb-3">
             <div className="overflow-hidden relative rounded-t-[24px]">
-              <img className="object-contain" src={item.url} alt={item.title} />
+              <img
+                className="object-contain"
+                src="/images/placeholder.png"
+                alt="course-img"
+              />
               <div className="bg-neutral-50 px-3 py-1 body text-neutral-500 rounded-[20px] absolute right-5 top-5">
                 {item.totalStudent} students
               </div>
@@ -43,8 +47,13 @@ function CardDashboardInstructor(props) {
                 )}
               </div>
 
-              <p className="body text-neutral-500">Prof. Dr. {item.instructors.name}</p>
-              <button className="btn-primary shadow-glow absolute bottom-5 right-5" onClick={() => navigate(`/instructor/course/${item.id}`)}>
+              <p className="body text-neutral-500">
+                Prof. Dr. {item.instructors.name}
+              </p>
+              <button
+                className="btn-primary shadow-glow absolute bottom-5 right-5"
+                onClick={() => navigate(`/instructor/course/${item.id}`)}
+              >
                 VIEW COURSE
               </button>
             </div>
