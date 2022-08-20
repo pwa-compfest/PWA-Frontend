@@ -27,6 +27,7 @@ function SignIn() {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
+        localStorage.setItem("PWA_LMS_AT", res.data.data.accessToken);
         navigate(`/`);
       })
       .catch((err) => {
