@@ -52,6 +52,10 @@ function App() {
                 />
                 <Route path="/register/student" element={<RegisterStudent />} />
                 <Route
+                  path="/register/instructor"
+                  element={<RegisterInstructor />}
+                />
+                <Route
                   path="/account/verify/:token/:userId"
                   element={<VerificationPage />}
                 />
@@ -61,10 +65,6 @@ function App() {
                 <Route
                   path="/instructor/course/:courseId"
                   element={<DetailCourseInstructor />}
-                />
-                <Route
-                  path="/register/instructor"
-                  element={<RegisterInstructor />}
                 />
                 <Route
                   path="/instructor/dashboard"
