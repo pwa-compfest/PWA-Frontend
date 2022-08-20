@@ -36,8 +36,8 @@ const ROLE = {
 
 function App() {
   return (
-    <AuthContextProvider>
-      <Router>
+    <Router>
+      <AuthContextProvider>
         <div className="App">
           <Navbar />
           <div className="content h-[80vh]  mt-8">
@@ -102,11 +102,13 @@ function App() {
               <Route element={<ProtectedRoute role={ROLE.ADMIN} />}>
                 <Route path="/admin/verify" element={<Verify />} />
               </Route>
+
+              <Route path="*" element={<LandingPage />} />
             </Routes>
           </div>
         </div>
-      </Router>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </Router>
   );
 }
 export default App;

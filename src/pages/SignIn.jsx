@@ -50,7 +50,7 @@ function SignIn() {
   }
 
   return (
-    <section className="bg-white md:h-[77.4vh] md:relative sm:px-[100px] px-[30px]">
+    <section className="bg-white px-[30px] h-full flex items-center">
       <div className="container">
         {message.display && (
           <Toast
@@ -59,13 +59,15 @@ function SignIn() {
             closeToast={setMessage}
           />
         )}
-        <div className="grid md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">
-          <div className="justify-center text-center p-5 hidden lg:mt-0 xl:block">
-            <h2 className="h2">Welcome Back!</h2>
-            <p className="subtitle text-neutral-500 mt-3">
-              Sign in and let's continue our journey towards free education.
-            </p>
-            <img src="/images/sign_in.png" alt="mockup" />
+        <div className="flex xl:flex-row flex-col xl:space-x-[64px] space-x-[40px] justify-center">
+          <div className="xl:flex xl:flex-col xl:space-y-[64px] text-center w-[500px] p-5 hidden lg:mt-0 h-full">
+            <div>
+              <h2 className="h2">Welcome Back!</h2>
+              <p className="subtitle text-neutral-500 mt-3">
+                Sign in and let's continue our journey towards free education.
+              </p>
+            </div>
+            <img src="/images/sign_in.png" alt="mockup" className="w-[500px]" />
           </div>
           <div className="justify-center max-w-md mx-auto md:max-w-2xl w-[500px] p-12 place-self-center rounded-[24px] shadow-xl ">
             <form onSubmit={handleSubmit}>

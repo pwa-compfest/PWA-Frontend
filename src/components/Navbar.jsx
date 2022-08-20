@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../context/AuthContext";
 
 function Navbar() {
-  const { getRole, isAuthorized } = useAuth();
+  const { getRole, signOut } = useAuth();
   const role = getRole();
+  const [openDropdown, setOpenDropdown] = useState();
+
+  const NavbarDropdown = () => {
+    return (
+      <button
+        onClick={() => signOut()}
+        className="selection-container w-full px-8 border-t-0 hover:bg-error-50"
+      >
+        <p className="body text-error-500 selection-body">Sign Out</p>
+      </button>
+    );
+  };
 
   return (
     <nav className="bg-white px-[35px] py-[15px] sm:px-[70px] sticky top-0 z-10">
@@ -17,7 +29,7 @@ function Navbar() {
             Perwibuan Course
           </span>
         </a>
-        {!isAuthorized ? (
+        {!role ? (
           <a
             href="/login"
             className="btn-text text-neutral-500 font-normal px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
@@ -25,16 +37,24 @@ function Navbar() {
             Sign In
           </a>
         ) : (
-          <div className="flex flex-row space-x-10 items-center">
+          <div className="flex flex-row space-x-10 items-center relative">
             <a
               href={`/${role}/dashboard`}
               className="body text-neutral-900 font-bold"
             >
               Dashboard
             </a>
-            <div className="text-[24px] text-neutral-500 space-x-8">
+            <button
+              onClick={() => setOpenDropdown(!openDropdown)}
+              className="text-[24px] text-neutral-500 space-x-8"
+            >
               <i class="fa-solid fa-circle-user"></i>
-            </div>
+            </button>
+            {openDropdown && (
+              <div className="absolute top-12  w-[200px] z-10">
+                <NavbarDropdown />
+              </div>
+            )}
           </div>
         )}
       </div>

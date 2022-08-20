@@ -24,10 +24,10 @@ function RegisteredPage() {
                 <span>Your Account Has Been Verified!</span>
               </h1>
               <p className="subtitle text-neutral-500 mt-4 w-[250px] xl:w-[500px] md:w-[300px]">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit.{" "}
+                Welcome in PWA Course, Happy learning, and teaching!{" "}
               </p>
               <button
-                onClick={() => navigate(`/dashboard`, { replace: true })}
+                onClick={() => navigate(`/`, { replace: true })}
                 className="btn-primary mt-10"
               >
                 VIEW DASHBOARD
