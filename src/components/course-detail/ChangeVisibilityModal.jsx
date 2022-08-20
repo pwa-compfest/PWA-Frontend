@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
 import Modal from "../Modal";
+import axios from "../../api/axios";
 
 function ChangeVisibilityModal({
   changeTo,
@@ -11,10 +11,11 @@ function ChangeVisibilityModal({
   onChangeVisibility,
 }) {
   const [loading, setLoading] = useState(false);
+
   function handleChangeVisibility() {
     setLoading(true);
     axios
-      .put(`/courses/${changeTo}/${id}`, {
+      .put(`/courses/${changeTo}/${id}`, null, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
         },
@@ -22,13 +23,13 @@ function ChangeVisibilityModal({
       })
       .then((res) => {
         console.log(res);
+        onChangeVisibility();
         setModalDisplay({ display: false });
         setMessage({
           display: true,
           type: "success",
           content: `Course changed to ${changeTo}`,
         });
-        onChangeVisibility();
       })
       .catch((err) => {
         console.log(err);
@@ -82,7 +83,9 @@ function ChangeVisibilityModal({
               </div>
             </>
           ) : (
-            <div className="loading-spinner" />
+            <div className="h-[300px] flex justify-center items-center">
+              <div className="loading-spinner" />
+            </div>
           )}
         </div>
       ) : (

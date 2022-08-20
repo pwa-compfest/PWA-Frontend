@@ -20,7 +20,9 @@ import DashboardStudent from "../pages/DashboardStudent";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContextProvider } from "../context/AuthContext";
 import { CookiesProvider } from "react-cookie";
-import DetailCourse from "../pages/DetailCourse";
+import DetailCourseInstructor from "../pages/instructor/DetailCourseInstructor";
+import DetailCourseStudent from "../pages/student/DetailCourseStudent";
+
 function App() {
   return (
     <CookiesProvider>
@@ -30,7 +32,14 @@ function App() {
             <Navbar />
             <div className="content h-[80vh]  mt-8">
               <Routes>
-                <Route path="/course/:courseId" element={<DetailCourse />} />
+                <Route
+                  path="/instructor/course/:courseId"
+                  element={<DetailCourseInstructor />}
+                />
+                <Route
+                  path="/student/course/:courseId"
+                  element={<DetailCourseStudent />}
+                />
                 <Route exact path="/" element={<LandingPage />} />
                 <Route path="/login" element={<SignIn />} />
                 <Route path="/register" element={<SignUp />} />

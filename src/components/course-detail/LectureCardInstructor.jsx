@@ -17,7 +17,7 @@ function LectureCardInstructor(props) {
     });
   }
   function submitChange(e) {
-    props.onEdit(item, props.id);
+    props.onEdit(item, props.item.id);
     setitem({ name: "", url: "" });
     setModalDisplay({ display: false });
     setToastState({
@@ -69,7 +69,9 @@ function LectureCardInstructor(props) {
         <DeleteLectureModal
           setModalDisplay={setModalDisplay}
           setMessage={setToastState}
-          lectureId={item.id}
+          lectureId={props.item.id}
+          onDelete={props.onDelete}
+          setLoadContent={props.setLoadContent}
         />
       )}
       <div className="relative shadow-md px-[40px] py-[20px] rounded-[24px] space-y-[40px] w-full">
@@ -89,10 +91,10 @@ function LectureCardInstructor(props) {
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
-        <p className="subtitle text-neutral-500">{props.title}</p>
+        <p className="subtitle text-neutral-500">{props.item.title}</p>
         <div className="flex justify-end">
           <button
-            onClick={() => window.open(props.url)}
+            onClick={() => window.open(props.item.url)}
             className="btn-text md:w-fit w-full"
           >
             Preview

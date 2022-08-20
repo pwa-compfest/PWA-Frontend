@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import React, { useState } from "react";
 import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
-function DeleteCourseModal({ setModalDisplay, id, onError, setMessage }) {
+function DeleteCourseModal({ setModalDisplay, id, setMessage }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   function handleDeleteCourse() {
