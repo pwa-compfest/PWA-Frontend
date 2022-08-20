@@ -21,6 +21,15 @@ function DetailCourseInstructor() {
   let { courseId } = useParams();
   const navigate = useNavigate();
 
+  function onEditLecture(item, idx) {
+    for (let index = 0; index < lectureList.length; index++) {
+      if (index === idx) {
+        lectureList[index] = item;
+      }
+    }
+    setLectureList([...lectureList]);
+  }
+
   function onDeleteLecture(idx) {
     lectureList.splice(idx, 1);
     setLectureList(lectureList);
@@ -229,7 +238,9 @@ function DetailCourseInstructor() {
                     return (
                       <LectureCardInstructor
                         key={index}
+                        idx={index}
                         item={item}
+                        onEdit={onEditLecture}
                         onDelete={() => onDeleteLecture(index)}
                         setLoadContent={setLoadContent}
                         setMessage={setToastState}

@@ -5,13 +5,10 @@ import CardHomePage from "../components/CardHomePage";
 function HomePage() {
   const [items, setItems] = useState([]);
 
-  const getItems = async () => {
-    const { items } = await axios.get(`/courses`);
-    setItems(items);
-  };
-
   useEffect(() => {
-    getItems();
+    axios.get(`/courses`).then((res) => {
+      setItems(res.data.data);
+    });
   }, []);
 
   return (
