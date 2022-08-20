@@ -2,7 +2,8 @@ import React from "react";
 import useAuth from "../context/AuthContext";
 
 function Navbar() {
-  const { currentUser } = useAuth();
+  const { getRole, isAuthorized } = useAuth();
+  const role = getRole();
 
   return (
     <nav className="bg-white px-[35px] py-[15px] sm:px-[70px] sticky top-0 z-10">
@@ -16,7 +17,7 @@ function Navbar() {
             Perwibuan Course
           </span>
         </a>
-        {!currentUser.loggedIn ? (
+        {!isAuthorized ? (
           <a
             href="/login"
             className="btn-text text-neutral-500 font-normal px-4 lg:px-5 py-2 lg:py-2.5 mr-2"
@@ -26,7 +27,7 @@ function Navbar() {
         ) : (
           <div className="flex flex-row space-x-10 items-center">
             <a
-              href={`/${currentUser.role}/dashboard`}
+              href={`/${role}/dashboard`}
               className="body text-neutral-900 font-bold"
             >
               Dashboard

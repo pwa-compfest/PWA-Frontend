@@ -15,11 +15,9 @@ function VerificationPage() {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
-        console.log(res);
         localStorage.setItem("PWA_LMS_AT", res.data.data.accessToken);
       })
       .catch((err) => {
-        console.log(err);
         navigate("/", { replace: true });
       })
       .finally(() => setLoading(false));

@@ -53,7 +53,6 @@ function RegisterStudent() {
     formData.append("phoneNumber", value.phoneNumber);
     formData.append("gender", value.gender);
     formData.append("role", value.role);
-    console.log(value);
     axios
       .post(`/auth/signup`, formData, {
         headers: { "Content-Type": "application/json" },
@@ -66,7 +65,7 @@ function RegisterStudent() {
           setMessage({
             display: true,
             type: "error",
-            content: err.response.data.message.errors[0].message,
+            content: "Email must be unique.",
           });
         } else {
           setMessage({

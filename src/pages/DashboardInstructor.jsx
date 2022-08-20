@@ -4,7 +4,7 @@ import CardDashboardInstructor from "../components/CardDashboardInstructor";
 
 function DashboardInstructor() {
   const [items, setItems] = useState([]);
-  const getItems = async () => {
+  useEffect(() => {
     axios
       .get(`/courses/instructor`,{
         headers: {
@@ -15,9 +15,6 @@ function DashboardInstructor() {
       .then((res) => {
         setItems(res.data.data);
       })
-  };
-  useEffect(() => {
-    getItems();
   }, []);
   return (
     <section className="bg-white md:h-[77.4vh] md:relative sm:px-[100px] px-[30px]">

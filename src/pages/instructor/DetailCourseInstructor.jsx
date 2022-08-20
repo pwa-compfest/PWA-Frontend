@@ -21,6 +21,15 @@ function DetailCourseInstructor() {
   let { courseId } = useParams();
   const navigate = useNavigate();
 
+  function onEditLecture(item, idx) {
+    for (let index = 0; index < lectureList.length; index++) {
+      if (index === idx) {
+        lectureList[index] = item;
+      }
+    }
+    setLectureList([...lectureList]);
+  }
+
   function onDeleteLecture(idx) {
     lectureList.splice(idx, 1);
     setLectureList(lectureList);
@@ -56,66 +65,40 @@ function DetailCourseInstructor() {
     axios
       .get(`/image/courses/${file}`)
       .then((res) => {
-        console.log(res);
         setImage(res.data.url);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   function getLectureList() {
     axios
-      .get(`/lectures/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/lectures/${courseId}`)
       .then((res) => {
-        console.log(res);
         setLectureList(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   function getQuizList() {
     axios
-      .get(`/quizzes/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/quizzes/${courseId}`)
       .then((res) => {
-        console.log(res);
         setQuizList(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`/courses/instructor/${courseId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
-        },
-        withCredentials: true,
-      })
+      .get(`/courses/instructor/${courseId}`)
       .then((res) => {
-        console.log(res);
         setCourseData(res.data.data);
         getImage(res.data.data.image);
         getLectureList();
         getQuizList();
       })
       .catch((err) => {
-        console.log(err);
         if (err.response.status === 401) {
           // UNAUTHORIZED
           navigate("/login");
@@ -175,16 +158,16 @@ function DetailCourseInstructor() {
                   >
                     {courseData.is_public ? (
                       <div className="text-secondary-500">
-                        <i class="fa-solid fa-globe" />
+                        <i className="fa-solid fa-globe" />
                       </div>
                     ) : (
-                      <i class="fa-solid fa-lock"></i>
+                      <i className="fa-solid fa-lock"></i>
                     )}
                   </button>
                 </div>
                 <div className="text-neutral-100 space-x-2 absolute top-4 right-[80px]">
                   <button>
-                    <i class="fa-solid fa-pencil"></i>
+                    <i onClick={() => navigate(`/instructor/edit-course/${courseData.id}`)} className="fa-solid fa-pencil"></i>
                   </button>
                   <button
                     onClick={() =>
@@ -194,7 +177,7 @@ function DetailCourseInstructor() {
                       })
                     }
                   >
-                    <i class="fa-solid fa-trash"></i>
+                    <i className="fa-solid fa-trash"></i>
                   </button>
                 </div>
                 <div className="xl:subtitle body text-neutral-500 space-y-1">
@@ -218,7 +201,7 @@ function DetailCourseInstructor() {
                 }
                 className="btn-icon-primary text-[30px] px-[10px] py-[6px] flex justify-center"
               >
-                <i class="fa-solid fa-plus"></i>
+                <i className="fa-solid fa-plus"></i>
               </button>
             </div>
             {content === "lecture" &&
@@ -229,7 +212,9 @@ function DetailCourseInstructor() {
                     return (
                       <LectureCardInstructor
                         key={index}
+                        idx={index}
                         item={item}
+                        onEdit={onEditLecture}
                         onDelete={() => onDeleteLecture(index)}
                         setLoadContent={setLoadContent}
                         setMessage={setToastState}
