@@ -80,7 +80,7 @@ function CardVerifyCourse() {
         return (
           <div className="max-w-md mx-auto md:max-w-2xl rounded-[24px] shadow-md w-[300px] h-[350px] grid grid-rows-2 mb-3 mt-12 ">
             <div className="overflow-hidden rounded-t-[24px] order-0 relative h-[225px]">
-              <img className="object-contain" src="/images/placeholder.png" alt="course-img" />
+              <img className="object-contain" src={item.getSignedUrl} alt="course-img" />
             </div>
             <div className="rounded-[24px] bg-bright p-5 order-1 relative">
               <p className="subtitle">{item.title}</p>

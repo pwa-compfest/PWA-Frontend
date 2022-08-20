@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 import CardDashboardInstructor from "../components/CardDashboardInstructor";
-
 function DashboardInstructor() {
   const [items, setItems] = useState([]);
+
   useEffect(() => {
     axios
       .get(`/courses/instructor`,{
@@ -15,7 +15,8 @@ function DashboardInstructor() {
       .then((res) => {
         setItems(res.data.data);
       })
-  }, []);
+    }, []);  
+  
   return (
     <section className="bg-white md:h-[77.4vh] md:relative sm:px-[100px] px-[30px]">
       <div className="container">
@@ -30,7 +31,7 @@ function DashboardInstructor() {
           </a>
         </div>
         <div className="flex flex-wrap gap-5 justify-center">
-          <CardDashboardInstructor data={items} />
+            <CardDashboardInstructor data={items} />    
         </div>
       </div>
     </section>
