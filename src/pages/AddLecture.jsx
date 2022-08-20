@@ -6,7 +6,7 @@ import Toast from "../components/Toast";
 function AddLecture() {
   const { courseId } = useParams();
   const [inputList, setInputList] = useState([
-    { courseId: courseId, title: "", url: "" },
+    { course_id: parseInt(courseId), title: "", url: "" },
   ]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ display: false });
@@ -26,10 +26,14 @@ function AddLecture() {
   };
 
   const handleAddClick = () => {
-    setInputList([...inputList, { courseId: courseId, title: "", url: "" }]);
+    setInputList([
+      ...inputList,
+      { course_id: parseInt(courseId), title: "", url: "" },
+    ]);
   };
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     if (inputList.length === 0) {
       setMessage({
         display: true,
@@ -40,17 +44,18 @@ function AddLecture() {
     }
 
     setLoading(true);
-    console.log(inputList);
+    console.log(JSON.stringify({ lecturesData: inputList }));
     axios
       .post(`/lectures`, JSON.stringify({ lecturesData: inputList }), {
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
         },
         withCredentials: true,
       })
       .then((res) => {
         console.log(res);
-        navigate(`/course/${courseId}`);
+        navigate(`/instructor/course/${courseId}`);
       })
       .catch((err) => {
         console.log(err);

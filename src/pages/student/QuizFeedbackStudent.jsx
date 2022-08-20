@@ -8,63 +8,23 @@ function QuizFeedbackStudent({ questionData, quizData }) {
   const [loading, setLoading] = useState(true);
   const { courseId, quizId } = useParams();
   const [quizResult, setQuizResult] = useState([]);
-  // DELETE LATER
-  const dummy = {
-    quizData: {
-      questions: [
-        {
-          id: 5,
-          answerRight: "A",
-          question: "1 * 1 = ?",
-          answer: {
-            A: "1",
-            B: "2",
-            C: "3",
-            D: "4",
-          },
-        },
-        {
-          id: 6,
-          answerRight: "D",
-          question: "2 - 2 = ?",
-          answer: {
-            A: "1",
-            B: "2",
-            C: "3",
-            D: "0",
-          },
-        },
-      ],
-    },
-    answerData: {
-      5: {
-        studentAnswer: "A",
-        rightAnswer: "A",
-      },
-      6: {
-        studentAnswer: "B",
-        rightAnswer: "D",
-      },
-    },
-    quizResult: 50,
-  };
 
   useEffect(() => {
     setLoading(true);
     axios
       .post(`/student-quizzes/`, JSON.stringify({ quizId, questionData }), {
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
         },
         withCredentials: true,
       })
       .then((res) => {
         console.log(res);
+        setQuizResult(res.data.data);
       })
       .catch((err) => {
         console.log(err);
-        // DELETE LATER
-        setQuizResult(dummy);
       })
       .finally(() => setLoading(false));
     // eslint-disable-next-line

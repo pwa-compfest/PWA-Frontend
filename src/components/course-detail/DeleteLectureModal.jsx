@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
-import axios from "axios";
-function DeleteLectureModal({ setModalDisplay, setMessage, lectureId }) {
+import axios from "../../api/axios";
+function DeleteLectureModal({
+  setModalDisplay,
+  setMessage,
+  lectureId,
+  onDelete,
+  setLoadContent,
+}) {
   const [loading, setLoading] = useState(false);
   function handleDeleteLecture() {
     setLoading(true);
+    console.log(lectureId);
     axios
       .delete(`/lectures/${lectureId}`, {
         headers: {
@@ -14,12 +21,7 @@ function DeleteLectureModal({ setModalDisplay, setMessage, lectureId }) {
       })
       .then((res) => {
         console.log(res);
-        setModalDisplay({ display: false });
-        setMessage({
-          display: true,
-          type: "success",
-          content: "Lecture is deleted.",
-        });
+        onDelete();
       })
       .catch((err) => {
         console.log(err);
@@ -30,7 +32,10 @@ function DeleteLectureModal({ setModalDisplay, setMessage, lectureId }) {
           content: "Failed to delete lecture.",
         });
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setLoadContent(false);
+      });
   }
   return (
     <Modal closeModal={() => setModalDisplay({ display: false })}>

@@ -51,7 +51,6 @@ function RegisterInstructor() {
     formData.append("phoneNumber", value.phoneNumber);
     formData.append("gender", value.gender);
     formData.append("role", value.role);
-    console.log(value);
     axios
       .post(`/auth/signup`, formData, {
         headers: { "Content-Type": "application/json" },
@@ -64,7 +63,7 @@ function RegisterInstructor() {
           setMessage({
             display: true,
             type: "error",
-            content: err.response.data.message.errors[0].message,
+            content: "Email must be unique.",
           });
         } else {
           setMessage({
@@ -164,10 +163,12 @@ function RegisterInstructor() {
           <div className="h-full flex items-center">
             <div className="justify-center max-w-md mx-auto md:max-w-2xl w-[500px] p-12 rounded-[24px] shadow-xl space-y-5 flex flex-col items-center">
               <div className="text-[160px] text-primary-50">
-                <i class="fa-solid fa-circle-check"></i>
+                <i class="fa-solid fa-envelope"></i>
               </div>
-              <h3 className="h3 text-center">Your Request Has Been Sent!</h3>
-              <p className="body text-neutral-500 text-center">{`We will send you a verification email to ${value.email} once we finished reviewing your submission.`}</p>
+              <h3 className="h3 text-center">
+                Email Verification Has Been Sent!
+              </h3>
+              <p className="body text-neutral-500 text-center">{`We have sent you a verification email to ${value.email}. Please check your inbox or spam.`}</p>
             </div>
           </div>
         )}

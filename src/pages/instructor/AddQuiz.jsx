@@ -4,7 +4,7 @@ import axios from "../../api/axios";
 import Toast from "../../components/Toast";
 function QuizInstructor() {
   const [inputList, setInputList] = useState([
-    { question: "", answer: { A: "", B: "", C: "", D: "" } },
+    { question: "", answer: { A: "", B: "", C: "", D: "" }, answer_right: "A" },
   ]);
   const quizNameRef = useRef();
   const descRef = useRef();
@@ -16,7 +16,7 @@ function QuizInstructor() {
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
-    if (name === "question") {
+    if (name === "question" || name === "answer_right") {
       list[index][name] = value;
     } else {
       list[index].answer[name] = value;
@@ -33,7 +33,11 @@ function QuizInstructor() {
   const handleAddClick = () => {
     setInputList([
       ...inputList,
-      { question: "", answer: { A: "", B: "", C: "", D: "" } },
+      {
+        question: "",
+        answer: { A: "", B: "", C: "", D: "" },
+        answer_right: "A",
+      },
     ]);
   };
 
@@ -48,23 +52,24 @@ function QuizInstructor() {
       return;
     }
     const body = {
-      courseId: courseId,
+      courseId: parseInt(courseId),
       title: quizNameRef.current.value,
       description: descRef.current.value,
       questions: inputList,
     };
-    console.log(body);
+    console.log(JSON.stringify(body));
     setLoading(true);
     axios
       .post(`/quizzes/`, JSON.stringify(body), {
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
         },
         withCredentials: true,
       })
       .then((res) => {
         console.log(res);
-        navigate(`/course/${courseId}`);
+        navigate(`/instructor/course/${courseId}`);
       })
       .catch((err) => {
         console.log(err);
@@ -109,7 +114,10 @@ function QuizInstructor() {
             </div>
             {inputList.map((x, i) => {
               return (
-                <div className="shadow-card w-[400px] p-[20px] rounded-[24px] mb-12">
+                <div
+                  key={i}
+                  className="shadow-card w-[400px] p-[20px] rounded-[24px] mb-12"
+                >
                   <div className="flex justify-end">
                     <button
                       className="w-[40px] h-[40px] text-[#E0E1E6]"
@@ -172,7 +180,12 @@ function QuizInstructor() {
 
                   <label className="label-form">Correct Answer</label>
                   <div className="mb-3 body flex gap-[20px]">
-                    <select className="text-input" name="correct_answer">
+                    <select
+                      required
+                      className="text-input"
+                      name="answer_right"
+                      onChange={(e) => handleInputChange(e, i)}
+                    >
                       <option value="A">A</option>
                       <option value="B">B</option>
                       <option value="C">C</option>
@@ -202,8 +215,9 @@ function QuizInstructor() {
           </form>
         </div>
       ) : (
-        <div className="h-full w-full flex flex-col justify-center items-center">
+        <div className="w-full h-full flex flex-col justify-center items-center space-y-8">
           <div className="loading-spinner" />
+          <p className="body">Submitting data...</p>
         </div>
       )}
     </section>

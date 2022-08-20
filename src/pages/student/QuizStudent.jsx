@@ -11,36 +11,6 @@ function QuizStudent() {
   const [questionData, setQuestionData] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
-  // DELETE LATER
-  const dummy = {
-    title: "Quiz 3",
-    description: "Mathematics Quiz 3",
-    totalQuestions: 2,
-    questions: [
-      {
-        id: 5,
-        question: "1 * 1 = ?",
-        answer: {
-          A: "1",
-          B: "2",
-          C: "3",
-          D: "4",
-        },
-      },
-      {
-        id: 6,
-        question: "2 - 2 = ?",
-        answer: {
-          A: "1",
-          B: "2",
-          C: "3",
-          D: "0",
-        },
-      },
-    ],
-    courseTitle: "Course 1",
-  };
-
   useEffect(() => {
     setLoading(true);
     axios
@@ -56,8 +26,6 @@ function QuizStudent() {
       })
       .catch((err) => {
         console.log(err);
-        // DELETE LATER
-        setQuizData(dummy);
       })
       .finally(() => {
         setLoading(false);

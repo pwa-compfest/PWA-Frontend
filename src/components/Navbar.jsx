@@ -25,12 +25,13 @@ function Navbar() {
           </a>
         ) : (
           <div className="flex flex-row space-x-10 items-center">
-            <p className="body text-neutral-900 font-bold">Dashboard</p>
+            <a
+              href={`/${currentUser.role}/dashboard`}
+              className="body text-neutral-900 font-bold"
+            >
+              Dashboard
+            </a>
             <div className="text-[24px] text-neutral-500 space-x-8">
-              {(currentUser.role === "ADMIN" ||
-                currentUser.role === "INSTRUCTOR") && (
-                <i class="fa-solid fa-bell"></i>
-              )}
               <i class="fa-solid fa-circle-user"></i>
             </div>
           </div>

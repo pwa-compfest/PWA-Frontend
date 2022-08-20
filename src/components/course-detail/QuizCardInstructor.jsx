@@ -1,15 +1,38 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
 import Toast from "../Toast";
+import axios from "../../api/axios";
 
-function QuizCardInstructor({ id, item, onEdit, onDelete }) {
+function QuizCardInstructor({ item, onEdit, setLoadContent, onDelete }) {
   const [modalDisplay, setModalDisplay] = useState(false);
   const [toastState, setToastState] = useState({ display: false });
-
+  const [loading, setLoading] = useState(false);
   function handleDeleteQuiz() {
-    onDelete(id);
-    setModalDisplay(false);
-    setToastState({ display: true, type: "success", content: "Quiz deleted." });
+    setLoading(true);
+    axios
+      .delete(`/quizzes/${item.id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("PWA_LMS_AT")}`,
+        },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        onDelete();
+      })
+      .catch((err) => {
+        console.log(err);
+        setModalDisplay(false);
+        setToastState({
+          display: true,
+          type: "error",
+          content: "Failed to delete lecture.",
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+        setLoadContent(false);
+      });
   }
 
   return (
@@ -19,26 +42,32 @@ function QuizCardInstructor({ id, item, onEdit, onDelete }) {
       )}
       {modalDisplay && (
         <Modal closeModal={() => setModalDisplay({ display: false })}>
-          <>
-            <div className="space-y-[10px] text-center">
-              <p className="h3">Delete Your Quiz?</p>
-              <p className="body">
-                Are you sure you want to delete your quiz? WARNING: This action
-                can't be undone.
-              </p>
+          {!loading ? (
+            <>
+              <div className="space-y-[10px] text-center">
+                <p className="h3">Delete Your Quiz?</p>
+                <p className="body">
+                  Are you sure you want to delete your quiz? WARNING: This
+                  action can't be undone.
+                </p>
+              </div>
+              <div className="flex flex-row justify-between mt-[40px]">
+                <button
+                  onClick={() => setModalDisplay(false)}
+                  className="btn-text text-error-500 enabled:hover:bg-error-50 enabled:focus:bg-error-50 enabled:active:bg-error-300"
+                >
+                  Cancel
+                </button>
+                <button onClick={handleDeleteQuiz} className="btn-primary">
+                  Yes
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="h-[300px] flex justify-center items-center">
+              <div className="loading-spinner" />
             </div>
-            <div className="flex flex-row justify-between mt-[40px]">
-              <button
-                onClick={() => setModalDisplay(false)}
-                className="btn-text text-error-500 enabled:hover:bg-error-50 enabled:focus:bg-error-50 enabled:active:bg-error-300"
-              >
-                Cancel
-              </button>
-              <button onClick={handleDeleteQuiz} className="btn-primary">
-                Yes
-              </button>
-            </div>
-          </>
+          )}
         </Modal>
       )}
       <div className="relative shadow-md px-[40px] py-[20px] rounded-[24px] space-y-[40px] w-full">
