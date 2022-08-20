@@ -6,7 +6,7 @@ import Toast from "../components/Toast";
 function CardHomePage(props) {
   const { data } = props;
   const [currentItems, setCurrentItems] = useState([]);
-  const [toastState, setToastState] = useState({ display: false });
+  const [message, setMessage] = useState({ display: false });
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 12;
@@ -43,8 +43,12 @@ function CardHomePage(props) {
 
   return (
     <>
-      {toastState.display && (
-        <Toast {...toastState} closeToast={setToastState} />
+      {message.display && (
+          <Toast
+            type={message.type}
+            content={message.content}
+            closeToast={setMessage}
+          />
       )}
       {currentItems.map((item) => {
         return (
