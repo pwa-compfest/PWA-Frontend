@@ -12,11 +12,9 @@ function QuizCardInstructor({ item, onEdit, setLoadContent, onDelete }) {
     axios
       .delete(`/quizzes/${item.id}`)
       .then((res) => {
-        console.log(res);
         onDelete();
       })
       .catch((err) => {
-        console.log(err);
         setModalDisplay(false);
         setToastState({
           display: true,

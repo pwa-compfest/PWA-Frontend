@@ -44,7 +44,6 @@ function AddLecture() {
     }
 
     setLoading(true);
-    console.log(JSON.stringify({ lecturesData: inputList }));
     axios
       .post(`/lectures`, JSON.stringify({ lecturesData: inputList }), {
         headers: {
@@ -52,11 +51,9 @@ function AddLecture() {
         },
       })
       .then((res) => {
-        console.log(res);
         navigate(`/instructor/course/${courseId}`);
       })
       .catch((err) => {
-        console.log(err);
         setMessage({
           display: true,
           type: "error",

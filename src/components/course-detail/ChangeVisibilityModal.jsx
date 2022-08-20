@@ -17,7 +17,6 @@ function ChangeVisibilityModal({
     axios
       .put(`/courses/${changeTo}/${id}`, null)
       .then((res) => {
-        console.log(res);
         onChangeVisibility();
         setModalDisplay({ display: false });
         setMessage({
@@ -27,7 +26,6 @@ function ChangeVisibilityModal({
         });
       })
       .catch((err) => {
-        console.log(err);
         setModalDisplay({ display: false });
         setMessage({
           display: true,

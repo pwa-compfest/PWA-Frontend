@@ -10,11 +10,9 @@ function DeleteCourseModal({ setModalDisplay, id, setMessage }) {
     axios
       .delete(`/courses/${id}`)
       .then((res) => {
-        console.log(res);
         navigate("/", { replace: true });
       })
       .catch((err) => {
-        console.log(err);
         setModalDisplay({ display: false });
         setMessage({
           display: true,

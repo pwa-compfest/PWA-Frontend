@@ -11,10 +11,6 @@ export default function LectureCardStudent({
     typeof studentProgress[item.id] !== "undefined" && studentProgress[item.id]
   );
   function handleOnClick() {
-    console.log(
-      JSON.stringify({ courseId: parseInt(courseId), lectureId: item.id })
-    );
-
     setLoading(true);
     axios
       .post(
@@ -27,13 +23,10 @@ export default function LectureCardStudent({
         }
       )
       .then((res) => {
-        console.log(res);
         setViewed(true);
         window.location.href(item.url);
       })
-      .catch((err) => {
-        console.log(err);
-      })
+      .catch((err) => {})
       .finally(() => setLoading(false));
   }
 

@@ -11,15 +11,12 @@ function DeleteLectureModal({
   const [loading, setLoading] = useState(false);
   function handleDeleteLecture() {
     setLoading(true);
-    console.log(lectureId);
     axios
       .delete(`/lectures/${lectureId}`)
       .then((res) => {
-        console.log(res);
         onDelete();
       })
       .catch((err) => {
-        console.log(err);
         setModalDisplay({ display: false });
         setMessage({
           display: true,

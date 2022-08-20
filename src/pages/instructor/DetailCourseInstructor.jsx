@@ -65,36 +65,27 @@ function DetailCourseInstructor() {
     axios
       .get(`/image/courses/${file}`)
       .then((res) => {
-        console.log(res);
         setImage(res.data.url);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   function getLectureList() {
     axios
       .get(`/lectures/${courseId}`)
       .then((res) => {
-        console.log(res);
         setLectureList(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   function getQuizList() {
     axios
       .get(`/quizzes/${courseId}`)
       .then((res) => {
-        console.log(res);
         setQuizList(res.data.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 
   useEffect(() => {
@@ -102,14 +93,12 @@ function DetailCourseInstructor() {
     axios
       .get(`/courses/instructor/${courseId}`)
       .then((res) => {
-        console.log(res);
         setCourseData(res.data.data);
         getImage(res.data.data.image);
         getLectureList();
         getQuizList();
       })
       .catch((err) => {
-        console.log(err);
         if (err.response.status === 401) {
           // UNAUTHORIZED
           navigate("/login");

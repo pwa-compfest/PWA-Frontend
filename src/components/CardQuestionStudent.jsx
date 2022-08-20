@@ -20,7 +20,6 @@ function CardQuestionStudent(props) {
     }
 
     props.setQuestionData(props.questionData);
-    console.log(props.questionData);
   };
 
   return (
