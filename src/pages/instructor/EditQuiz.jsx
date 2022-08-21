@@ -26,7 +26,7 @@ function EditQuiz() {
           description: res.data.data.description,
         });
       });
-  }, []);
+  }, [location.state.courseId, location.state.quizId]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -208,6 +208,7 @@ function EditQuiz() {
                       required
                       className="text-input"
                       name="answer_right"
+                      value={x.answer_right}
                       onChange={(e) => handleInputChange(e, i)}
                     >
                       <option value="A">A</option>
