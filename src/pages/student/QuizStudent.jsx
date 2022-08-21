@@ -31,8 +31,7 @@ function QuizStudent() {
   }, [courseId, quizId]);
 
   function handleSubmit() {
-    console.log(questionData);
-    if (questionData.length !== quizData.length) {
+    if (questionData.length !== quizData.questions.length) {
       setMessage({
         display: true,
         type: "error",
