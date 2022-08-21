@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "../../api/axios";
 import Toast from "../../components/Toast";
@@ -16,25 +16,27 @@ function EditQuiz() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  axios
-    .get(`/quizzes/quiz/${location.state.courseId}/${location.state.quizId}`)
-    .then((res) => {
-      setInputList(res.data.data.questions);
-      setitem({
-        title: res.data.data.courseTitle,
-        description: res.data.data.description,
+  useEffect(() => {
+    axios
+      .get(`/quizzes/quiz/${location.state.courseId}/${location.state.quizId}`)
+      .then((res) => {
+        setInputList(res.data.data.questions);
+        setitem({
+          title: res.data.data.courseTitle,
+          description: res.data.data.description,
+        });
       });
-    });
+  }, [location.state.courseId, location.state.quizId]);
 
-    function handleChange(e) {
-      const { name, value } = e.target;
-      setitem((prevItem) => {
-        return {
-          ...prevItem,
-          [name]: value,
-        };
-      });
-    }
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setitem((prevItem) => {
+      return {
+        ...prevItem,
+        [name]: value,
+      };
+    });
+  }
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -206,6 +208,7 @@ function EditQuiz() {
                       required
                       className="text-input"
                       name="answer_right"
+                      value={x.answer_right}
                       onChange={(e) => handleInputChange(e, i)}
                     >
                       <option value="A">A</option>
